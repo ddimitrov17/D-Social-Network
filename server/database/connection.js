@@ -1,4 +1,5 @@
 const mongoose=require("mongoose");
+const { User } = require("../models/userModel");
 
 async function mongoConnection() {
     try {
