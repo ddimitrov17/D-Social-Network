@@ -31,11 +31,11 @@ const userSchema = new Schema(
             default: ""
         },
         likedPosts: {
-            type: SchemaTypes.ObjectId,
-            res: "Post",
+            type: Array,
+            ref: "Post",
             default: []
         }
-    }
+    }, { timestamps: true }
 );
 
 const User = model("User", userSchema);
