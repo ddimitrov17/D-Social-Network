@@ -32,6 +32,29 @@ async function signup(req, res) {
     }
 };
 
+async function login(req,res) {
+    try {
+        const { username, password } = req.body;
+		const user = await User.findOne({ username });
+		const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
+        console.log(isPasswordCorrect);
+        if (!user || !isPasswordCorrect) {
+			return res.status(400).json({ error: "Invalid username or password" });
+		};
+
+        res.status(200).json({
+            _id: user._id,
+            fullName: user.fullName,
+            username: user.username,
+            email: user.email
+        });
+    } catch (error) {
+        console.log('Error in login controller');
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+}
+
 module.exports = {
-    signup
+    signup,
+    login
 }
