@@ -1,17 +1,19 @@
 const express = require('express');
 const { signup, login } = require('../controllers/authController');
+const { isUserLogged } = require('../middleware/routeGuards');
+const { createPost } = require('../controllers/postController');
 
-const router = express.Router();
+const authRoutes = express.Router();
 
-router.get('/signup', (req, res) => {
+authRoutes.get('/signup', (req, res) => {
     res.json({
         data: "You hit the signup endpoint"
     })
 })
 
-router.post('/signup',signup);
-router.post('/login',login);
+authRoutes.post('/signup',signup);
+authRoutes.post('/login',login);
 
 module.exports = {
-    router
+    authRoutes
 } 

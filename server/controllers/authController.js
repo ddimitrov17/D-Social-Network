@@ -1,9 +1,9 @@
 const { User } = require('../models/userModel.js');
 const bcrypt = require('bcrypt');
+const { generateTokenAndSetCookie } = require('../services/generateToken.js');
 
 async function signup(req, res) {
     try {
-        console.log(req.body)
         const { username, email, fullName, password } = req.body;
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
@@ -16,6 +16,7 @@ async function signup(req, res) {
         });
 
         if (newUser) {
+            generateTokenAndSetCookie(newUser._id.toString(),username,res);
             await newUser.save();
             res.status(201).json({
                 _id: newUser._id,
@@ -37,10 +38,10 @@ async function login(req,res) {
         const { username, password } = req.body;
 		const user = await User.findOne({ username });
 		const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
-        console.log(isPasswordCorrect);
         if (!user || !isPasswordCorrect) {
 			return res.status(400).json({ error: "Invalid username or password" });
 		};
+        generateTokenAndSetCookie(user._id.toString(),username,res);
 
         res.status(200).json({
             _id: user._id,

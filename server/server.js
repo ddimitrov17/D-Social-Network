@@ -1,16 +1,28 @@
 const express = require("express");
 const { urlencoded } = require('express');
-const { router } = require('./routes/auth.js')
+const { authRoutes } = require('./routes/auth.js')
 const { mongoConnection } = require('../server/database/connection.js')
 const dotenv = require('dotenv');
+const cookieParser = require("cookie-parser");
+const { v2 } = require('cloudinary');
+const { postRoutes } = require("./routes/postRouter.js");
 
 dotenv.config();
+
+v2.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
+
 const app = express();
 
 
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
-app.use('/api/auth', router);
+app.use(cookieParser());
+app.use('/api/auth', authRoutes);
+app.use("/api/posts", postRoutes);
 const PORT = process.env.PORT || 5000;
 
 

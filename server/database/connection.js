@@ -1,5 +1,6 @@
-const mongoose=require("mongoose");
+const mongoose = require("mongoose");
 const { User } = require("../models/userModel");
+const { Post } = require("../models/postModel");
 
 async function mongoConnection() {
     try {
