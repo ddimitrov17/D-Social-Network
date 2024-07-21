@@ -34,8 +34,21 @@ async function createPost(req, res) {
     }
 };
 
+async function getAllPosts(req, res) {
+    try {
+        const posts = await Post.find().sort({ createdAt: -1 });
+        if (posts.length === 0) {
+			return res.status(200).json([]);
+		}
+        res.status(200).json(posts);
+    } catch (error) {
+        console.log("Error in getAllPosts controller", error);
+    }
+}
+
 
 
 module.exports = {
-    createPost
+    createPost,
+    getAllPosts
 }
