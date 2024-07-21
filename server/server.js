@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require('cors');
 const { urlencoded } = require('express');
 const { authRoutes } = require('./routes/auth.js')
 const { mongoConnection } = require('../server/database/connection.js')
@@ -17,7 +18,7 @@ v2.config({
 
 const app = express();
 
-
+app.use(cors());
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
