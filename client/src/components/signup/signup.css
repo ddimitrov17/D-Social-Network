@@ -1,0 +1,117 @@
+.signup-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    height: 100vh;
+    padding-left: 120%;
+  }
+  
+  .signup-image-container {
+    flex: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .signup-image {
+    width: 200px;
+    height: 200px;
+    fill: white;
+  }
+  
+  @media (min-width: 1024px) {
+    .signup-image-container {
+      display: flex;
+    }
+  }
+  
+  .signup-form-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signup-form {
+    width: 66.6667%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .signup-small-image {
+    width: 6rem;
+    fill: white;
+    display: block;
+  }
+  
+  @media (min-width: 768px) {
+    .signup-form {
+      width: auto;
+      margin: 0 5rem;
+    }
+    .signup-small-image {
+      display: none;
+    }
+  }
+  
+  .signup-title {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: white;
+  }
+  
+  .signup-input-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+  }
+  
+  .signup-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+  }
+  
+  .signup-input-group {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .signup-button {
+    background-color: #67a742;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+  }
+  
+  .signup-button-outline {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #67a742;
+    border-radius: 9999px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+  }
+  
+  .signup-signin-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  
+  .signup-signin-text {
+    color: white;
+    font-size: 1.125rem;
+  }
+  
