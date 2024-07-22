@@ -2,7 +2,7 @@ import React from 'react';
 
 import './createPost.css';
 
-export default function createPost({ onClose }) {
+export default function CreatePost({ onClose }) {
 	return (
 		<div className="modal-overlay">
 			<div className='create-post'>

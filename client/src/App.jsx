@@ -6,7 +6,7 @@ import './App.css';
 import SignUp from './components/signup/SignUp';
 import LoginPage from './components/login/Login';
 import Catalog from './components/catalog/Catalog';
-import createPost from './components/createPost/CreatePost';
+// import CreatePost from './components/createPost/CreatePost';
 
 export default function App() {
   const location = useLocation();
@@ -25,7 +25,7 @@ export default function App() {
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/logout" element={<div>Logout</div>} />
-        <Route path="/create" element={<createPost />} />
+        {/* <Route path="/create" element={<CreatePost onClick={onClose}/>} /> */}
       </Routes>
       {!hidePanes && <RightPane />}
     </div>

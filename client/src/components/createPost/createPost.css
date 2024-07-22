@@ -94,6 +94,7 @@
 }
 
 .close-button {
+  background-color: transparent;
   color: white;
   position: absolute;
   top: 1rem;

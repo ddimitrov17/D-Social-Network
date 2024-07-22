@@ -14,7 +14,7 @@ export default function LeftPane() {
 
   function closeModalHandler() {
     setIsModalOpen(false);
-    navigate('/')
+    navigate(-1)
   }
 
   return (
