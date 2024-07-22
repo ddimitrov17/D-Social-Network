@@ -1,0 +1,29 @@
+.home {
+  background: transparent;
+  color: #ffffff;
+  width: 600px;
+}
+
+.home-main-content {
+  min-height: 100vh;
+}
+
+.home-header {
+  display: flex;
+  border-bottom: 1px solid #666666; 
+  width: 100%;
+  font-weight: 500;
+}
+
+.home-tab {
+  display: flex;
+  position: relative;
+  padding: 0.75rem;
+  flex: 1 1 0%;
+  justify-content: center;
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+  transition-duration: 300ms;
+  cursor: pointer;
+}
