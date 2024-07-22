@@ -66,7 +66,7 @@
 .post-functionality {
     display: flex;
     justify-content: space-around;
-    border-top: 1px solid gray; /* TODO: Remove */
+    border-top: 1px solid gray; /*TODO: Remove*/
 }
 
 .functionalities {
@@ -83,16 +83,25 @@
     height: 1.5rem; 
 }
 
-.options-button {
+.button-container {
+    display: flex;
+    gap: 0.5rem; 
     position: absolute;
-    top: 15px;
-    right: 10px;
-    padding: 0.5rem 1rem;
+    top: 15px; 
+    right: 10px; 
+}
+
+.options-button {
+    padding: 0.25rem 0.5rem;
     background-color: transparent;
     color: white;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem; 
 }
 
 .options-button:hover {
@@ -100,8 +109,8 @@
 }
 
 .options-button svg {
-    width: 1.5rem; 
-    height: 1.5rem; 
+    width: 1.3rem; 
+    height: 1.3rem; 
     color: #696d67;
 }
 
