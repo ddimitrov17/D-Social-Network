@@ -1,0 +1,12 @@
+.catalog {
+    overflow: auto;
+    display: grid;
+    width: 600px;
+}
+
+.catalog-right-pane {
+    background: transparent;
+    color: #fff;
+    width: 300px;
+    border-left: 1px solid #666666;
+}

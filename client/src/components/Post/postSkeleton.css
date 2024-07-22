@@ -1,0 +1,133 @@
+.post-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    border-bottom: 1px solid gray;
+    position: relative; 
+}
+
+.post-header {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.avatar-skeleton {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+    background-color: #e0e0e0;
+    margin: 1rem;
+    margin-right: 0rem;
+    margin-top: 1.7rem;
+}
+
+.header-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.name-skeleton,
+.username-skeleton,
+.content-skeleton {
+    background-color: #000000;
+    border-radius: 0.5rem;
+}
+
+.name-skeleton {
+    height: 1.0rem;
+    width: 100%;
+    font-weight: bold;
+    color: white;
+}
+
+.username-skeleton {
+    height: 1.0rem;
+    width: 100%;
+    color: gray;
+}
+
+.content-skeleton {
+    color: white;
+    height: 100%;
+    width: 95%;
+    margin-left: 1rem;
+}
+
+.post-image {
+    margin-left: 2rem;
+    width: 89%;
+    border-radius: 8px;
+}
+
+.post-functionality {
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid gray; /* TODO: Remove */
+}
+
+.functionalities {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #555;
+    font-size: 0.9rem;
+    background-color: #000000;
+}
+
+.functionalities svg {
+    width: 1.5rem; 
+    height: 1.5rem; 
+}
+
+.options-button {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.options-button:hover {
+    background-color: #363636;
+}
+
+.options-button svg {
+    width: 1.5rem; 
+    height: 1.5rem; 
+    color: #696d67;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 15px; 
+    right: 65px;
+    background-color: #000000;
+    border: 1px solid #353535;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    display: none;
+    z-index: 1000;
+}
+
+.dropdown-menu.visible {
+    display: block; 
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+	font-weight: bold;
+}
+
+.dropdown-item:hover {
+    background-color: #333;
+}
