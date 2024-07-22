@@ -1,5 +1,5 @@
 const express = require('express');
-const { signup, login } = require('../controllers/authController');
+const { signup, login, logout, getCurrentUser } = require('../controllers/authController');
 const { isUserLogged } = require('../middleware/routeGuards');
 const { createPost } = require('../controllers/postController');
 
@@ -13,6 +13,8 @@ authRoutes.get('/signup', (req, res) => {
 
 authRoutes.post('/signup',signup);
 authRoutes.post('/login',login);
+authRoutes.get('/logout',logout);
+authRoutes.get('/current',isUserLogged,getCurrentUser);
 
 module.exports = {
     authRoutes
