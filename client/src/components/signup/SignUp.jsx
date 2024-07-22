@@ -20,7 +20,6 @@ export default function SignUp() {
 
   async function signUpSubmitHandler(e) {
     e.preventDefault();
-    console.log(formData);
     try {
       const response = await fetch('http://localhost:5000/api/auth/signup', {
         method: 'POST',
@@ -35,7 +34,6 @@ export default function SignUp() {
         throw new Error();
         //TODO Error handling
       }
-      console.log(response);
       console.log('Sign up successful!'); //TODO: Remove this
     } catch (error) {
       console.error('There was a problem with the signup:', error);
