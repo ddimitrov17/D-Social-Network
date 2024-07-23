@@ -13,13 +13,14 @@ export default function Catalog() {
                 const response = await fetch('http://localhost:5000/api/posts/all');
                 const postsData = await response.json();
                 setPosts(postsData);
+                // console.log('fetch posts successful');
             } catch (error) {
                 console.error('Error fetching posts:', error);
             }
         };
 
         fetchPosts();
-    }, [posts]);
+    }, []);
     return (
         <>
 

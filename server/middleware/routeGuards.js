@@ -7,7 +7,6 @@ async function isUserLogged(req, res, next) {
         if (!token) {
             return res.status(400).json({ error: "No Token Provided" });
         }
-
         const verification = jwt.verify(token, process.env.JWT_SECRET);
         console.log(verification)
         if (!verification) {
