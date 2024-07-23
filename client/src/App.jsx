@@ -7,6 +7,7 @@ import SignUp from './components/signup/SignUp';
 import LoginPage from './components/login/Login';
 import Catalog from './components/catalog/Catalog';
 import { useEffect, useState } from 'react';
+import UserContext from './components/contexts/UserContext';
 import CreatePost from './components/createPost/CreatePost';
 
 export default function App() {
@@ -21,8 +22,13 @@ export default function App() {
           credentials: 'include'
         });
         const data = await response.json();
-        setCurrentUser(data);
-        console.log(data);
+        data.status=response.status;
+        if (data.status==200) {
+          setCurrentUser(data);
+        } else {
+          setCurrentUser(false);
+        }
+        // console.log(currentUser);
       } catch (error) {
         console.log('Error in getting current user');
       }
@@ -31,6 +37,7 @@ export default function App() {
   }, [location.pathname]); //TODO: Can make it rerender just when a user logs in or logs out , every other time it would be in the context ; basically fetch it once then fetch only when there is log in or logout
   return (
     <div className="app">
+      <UserContext.Provider value={{ user: currentUser}}>
       {!hidePanes && <LeftPane />}
       {/* {!hidePanes && <Home />} */}
       <Routes>
@@ -45,6 +52,7 @@ export default function App() {
         {/* <Route path="/create" element={<CreatePost />} /> */}
       </Routes>
       {!hidePanes && <RightPane />}
-    </div>
+    </UserContext.Provider>
+    </div >
   );
 }
