@@ -1,11 +1,12 @@
 import { React, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LogoSvg from "../svg/Logo";
 import { MdOutlineMail, MdDriveFileRenameOutline, MdPassword } from 'react-icons/md';
 import { FaUser } from 'react-icons/fa';
 import './signup.css';
 
 export default function SignUp() {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     username: '',
@@ -35,6 +36,7 @@ export default function SignUp() {
         //TODO Error handling
       }
       console.log('Sign up successful!'); //TODO: Remove this
+      navigate('/');
     } catch (error) {
       console.error('There was a problem with the signup:', error);
     }

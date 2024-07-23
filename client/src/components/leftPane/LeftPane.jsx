@@ -7,7 +7,6 @@ import CreatePost from '../createPost/CreatePost';
 
 export default function LeftPane() {
   const { user } = useContext(UserContext);
-  console.log(user);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   function createPostHandler() {
@@ -59,7 +58,7 @@ export default function LeftPane() {
           <button className="account">
             <div>
               <div className="name">{user.fullName}</div>
-              <div className="username">@{user.username}</div>
+              <div className="username">{user.username}</div>
             </div>
           </button>
         </footer>

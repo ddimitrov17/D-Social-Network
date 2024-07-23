@@ -5,12 +5,12 @@ async function isUserLogged(req, res, next) {
     try {
         const token = req.cookies.jwt;
         if (!token) {
-            return res.status(400).json({ error: "No Token Provided" });
+            return res.status(401).json({ error: "No Token Provided" });
         }
         const verification = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(verification)
+        // console.log(verification)
         if (!verification) {
-            return res.status(400).json({ error: "Invalid Token"});
+            return res.status(401).json({ error: "Invalid Token"});
         }
 
         const user = await User.findById(verification.id).select("-password");

@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoSvg from "../svg/Logo";
 import { MdOutlineMail, MdPassword } from "react-icons/md";
 import './login.css';
 
 export default function LoginPage() {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -31,6 +32,7 @@ export default function LoginPage() {
         //TODO Error handling
       }
       console.log('Login successful!'); //TODO: Remove this
+      navigate('/');
     } catch (error) {
       console.error('There was a problem with the login:', error);
     }
