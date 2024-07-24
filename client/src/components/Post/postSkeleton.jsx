@@ -3,7 +3,7 @@ import './postSkeleton.css';
 import { bookmarkSVG, commentSVG, dislikeSVG, likeSVG, deleteSVG, editSVG, detailsSVG } from './postSVG';
 import { useNavigate } from 'react-router-dom';
 
-export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle }) {
+export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle }) {
   const navigate = useNavigate();
   function detailsClickHandler() {
     navigate(`/details/${postId}`);
@@ -12,17 +12,17 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   return (
     <div className='post-skeleton'>
       <div className="button-container">
-        {detailsPageToggle && (<button className='options-button'>
+        {commentToggle && (detailsPageToggle && (<button className='options-button'>
           {editSVG}
-        </button>)}
-        {detailsPageToggle && (<button className='options-button'>
+        </button>))}
+        {commentToggle && (detailsPageToggle && (<button className='options-button'>
           {deleteSVG}
-        </button>)}
-        {!detailsPageToggle && (
+        </button>))}
+        {!commentToggle && (!detailsPageToggle && (
           <button className='options-button' onClick={detailsClickHandler}>
             {detailsSVG}
           </button>
-        )}
+        ))}
       </div>
       <div className='post-header'>
         <div className='avatar-skeleton'></div>
@@ -34,10 +34,10 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       <div className='content-skeleton'>{text}</div>
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
       <div className='post-functionality'>
-        <button className='functionalities'>{likeSVG}</button>
-        <button className='functionalities'>{dislikeSVG}</button>
-        <button className='functionalities'>{commentSVG}</button>
-        <button className='functionalities'>{bookmarkSVG}</button>
+        {!commentToggle && <button className='functionalities'>{likeSVG}</button>}
+        {!commentToggle && <button className='functionalities'>{dislikeSVG}</button>}
+        {!commentToggle && <button className='functionalities'>{commentSVG}</button>}
+        {!commentToggle && <button className='functionalities'>{bookmarkSVG}</button>}
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ export default function Catalog() {
 
             {/* <LeftPane /> */}
             <div className="catalog">
-                {posts.map(currentPost => <PostSkeleton key={currentPost._id} text={currentPost.text} image={currentPost?.img} username={currentPost.user.username} fullName={currentPost.user.fullName} postId={currentPost._id} detailsPageToggle={false}/>)}
+                {posts.map(currentPost => <PostSkeleton key={currentPost._id} text={currentPost.text} image={currentPost?.img} username={currentPost.user.username} fullName={currentPost.user.fullName} postId={currentPost._id} detailsPageToggle={false} commentToggle={false}/>)}
             </div>
             {/* <div className="catalog-right-pane">
                 WHO TO FOLLOW SECTION

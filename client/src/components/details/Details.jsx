@@ -35,7 +35,8 @@ export default function Details() {
                         fullName={currentComment.user.fullName}
                         username={currentComment.user.username}
                         detailsPageToggle={true}
-                        image={currentComment.img} />
+                        image={currentComment.img} 
+                        commentToggle={true}/>
                 ))}
             </div>
         </>
