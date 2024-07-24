@@ -1,5 +1,6 @@
 .right-pane {
-  background: transparent;
+  background-color: black;
+  /* background: transparent; */
   color: #fff;
   width: 100%;
   border-left: 1px solid #666666; 
