@@ -82,7 +82,7 @@ async function getPostById(req, res) {
 async function commentOnPost(req, res) {
     try {
         const { text } = req.body;
-        // const img =req.body?.img;
+        let img = req.body.img;
         const postId = req.params.id;
         const userId = req.user._id;
 
@@ -95,7 +95,12 @@ async function commentOnPost(req, res) {
             return res.status(404).json({ error: "Post not found" });
         }
 
-        const comment = { user: userId, text: text};
+        if (img) {
+            const upload = await v2.uploader.upload(img);
+            img = upload.secure_url;
+        }
+
+        const comment = { user: userId, text: text, img: img };
 
         post.comments.push(comment);
         await post.save();

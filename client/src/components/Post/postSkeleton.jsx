@@ -7,7 +7,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   const navigate = useNavigate();
   function detailsClickHandler() {
     navigate(`/details/${postId}`);
-    console.log(postId);
+    // console.log(postId);
   }
   return (
     <div className='post-skeleton'>

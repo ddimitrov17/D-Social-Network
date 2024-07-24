@@ -29,6 +29,9 @@ const postSchema = new Schema(
                     type: SchemaTypes.ObjectId,
                     ref: "User",
                     required: true
+                },
+                img: {
+                    type: String
                 }
             }
         ]
