@@ -61,7 +61,7 @@
 
 .post-image {
     margin-left: 2rem;
-    width: 89%;
+    width: 530px; /* Edit from 89% */
     border-radius: 8px;
 }
 

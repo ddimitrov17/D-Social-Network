@@ -1,6 +1,6 @@
 import { React } from 'react';
 import './postSkeleton.css';
-import { bookmarkSVG, commentSVG, dislikeSVG, likeSVG, deleteSVG, editSVG, detailsSVG } from './postSVG';
+import { bookmarkSVG, commentSVG, likeSVG, deleteSVG, editSVG, detailsSVG } from './postSVG';
 import { useNavigate } from 'react-router-dom';
 
 export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle }) {
@@ -12,10 +12,10 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   return (
     <div className='post-skeleton'>
       <div className="button-container">
-        {commentToggle && (detailsPageToggle && (<button className='options-button'>
+        {!commentToggle && (detailsPageToggle && (<button className='options-button'>
           {editSVG}
         </button>))}
-        {commentToggle && (detailsPageToggle && (<button className='options-button'>
+        {!commentToggle && (detailsPageToggle && (<button className='options-button'>
           {deleteSVG}
         </button>))}
         {!commentToggle && (!detailsPageToggle && (
@@ -35,7 +35,6 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
       <div className='post-functionality'>
         {!commentToggle && <button className='functionalities'>{likeSVG}</button>}
-        {!commentToggle && <button className='functionalities'>{dislikeSVG}</button>}
         {!commentToggle && <button className='functionalities'>{commentSVG}</button>}
         {!commentToggle && <button className='functionalities'>{bookmarkSVG}</button>}
       </div>
