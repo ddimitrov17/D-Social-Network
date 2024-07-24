@@ -1,0 +1,64 @@
+.replyToPost {
+    border-bottom: 1px solid gray;
+}
+
+.reply-post {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    background-color: black;
+    border-radius: 5px;
+    width: 400px;
+    height: 70px;
+}
+
+.reply-post .form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.reply-post .textarea {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    width: 100%;
+    height: 13vh;
+    padding: 2px;
+    font-size: 1.125rem;
+    resize: none;
+    outline: none;
+    background: black;
+    cursor: inherit;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.reply-post .button {
+    background-color: #67a742;
+    border-radius: 9999px;
+    color: white;
+    position: absolute;
+    bottom: 1rem;
+    right: -1rem;
+}
+
+.reply-post .textarea-image {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    width: 70%;
+    height: 4vh;
+    padding: 2px;
+    font-size: 1.125rem;
+    resize: none;
+    outline: none;
+    background: black;
+    cursor: inherit;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
