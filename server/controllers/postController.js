@@ -37,41 +37,41 @@ async function createPost(req, res) {
 async function getAllPosts(req, res) {
     try {
         const posts = await Post.find()
-        .sort({ createdAt: -1 })
-        .populate({
-            path: "user",
-            select: "-password",
-        })
-        .populate({
-            path: "comments.user",
-            select: "-password",
-        });
+            .sort({ createdAt: -1 })
+            .populate({
+                path: "user",
+                select: "-password",
+            })
+            .populate({
+                path: "comments.user",
+                select: "-password",
+            });
         if (posts.length === 0) {
-			return res.status(200).json([]);
-		}
+            return res.status(200).json([]);
+        }
         res.status(200).json(posts);
     } catch (error) {
         console.log("Error in getAllPosts controller", error);
     }
 }
 
-async function getPostById(req,res) {
+async function getPostById(req, res) {
     try {
-        const postId=req.params.id;
+        const postId = req.params.id;
         // console.log(postId)
         const post = await Post.findById(postId)
-        .lean()
-        .populate({
-            path: "user",
-            select: "-password",
-        })
-        .populate({
-            path: "comments.user",
-            select: "-password",
-        });
+            .lean()
+            .populate({
+                path: "user",
+                select: "-password",
+            })
+            .populate({
+                path: "comments.user",
+                select: "-password",
+            });
         console.log(post);
         if (!post) {
-            res.status(400).json({ error: "Can't find this post"});
+            res.status(400).json({ error: "Can't find this post" });
         }
         res.status(200).json(post);
     } catch (error) {
@@ -79,10 +79,38 @@ async function getPostById(req,res) {
     }
 }
 
+async function commentOnPost(req, res) {
+    try {
+        const { text } = req.body;
+        // const img =req.body?.img;
+        const postId = req.params.id;
+        const userId = req.user._id;
+
+        if (!text) {
+            return res.status(400).json({ error: "Text field is required" });
+        }
+        const post = await Post.findById(postId);
+
+        if (!post) {
+            return res.status(404).json({ error: "Post not found" });
+        }
+
+        const comment = { user: userId, text: text};
+
+        post.comments.push(comment);
+        await post.save();
+
+        res.status(200).json(post);
+    } catch (error) {
+        console.log("Error in commentOnPost controller: ", error);
+    }
+};
+
 
 
 module.exports = {
     createPost,
     getAllPosts,
-    getPostById
+    getPostById,
+    commentOnPost
 }
