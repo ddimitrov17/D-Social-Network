@@ -18,7 +18,7 @@ export default function Details() {
         };
         fetchPostDetails();
     }, [id]);
-    console.log(postDetails?.comments)
+    // console.log(id)
     return (
         <>
             <div>
@@ -28,8 +28,8 @@ export default function Details() {
                     username={postDetails?.user?.username}
                     image={postDetails?.img}
                 />
-                <PostReply />
-                {postDetails?.comments.map(currentComment => (
+                <PostReply postId={id}/>
+                {postDetails?.comments.reverse().map(currentComment => (
                     <PostSkeleton text={currentComment.text}
                         key={currentComment._id}
                         fullName={currentComment.user.fullName}
