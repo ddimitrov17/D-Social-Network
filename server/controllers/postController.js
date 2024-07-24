@@ -45,7 +45,7 @@ async function getAllPosts(req, res) {
         .populate({
             path: "comments.user",
             select: "-password",
-        });;
+        });
         if (posts.length === 0) {
 			return res.status(200).json([]);
 		}
@@ -55,9 +55,34 @@ async function getAllPosts(req, res) {
     }
 }
 
+async function getPostById(req,res) {
+    try {
+        const postId=req.params.id;
+        // console.log(postId)
+        const post = await Post.findById(postId)
+        .lean()
+        .populate({
+            path: "user",
+            select: "-password",
+        })
+        .populate({
+            path: "comments.user",
+            select: "-password",
+        });
+        console.log(post);
+        if (!post) {
+            res.status(400).json({ error: "Can't find this post"});
+        }
+        res.status(200).json(post);
+    } catch (error) {
+        console.log('Error while finding this post');
+    }
+}
+
 
 
 module.exports = {
     createPost,
-    getAllPosts
+    getAllPosts,
+    getPostById
 }
