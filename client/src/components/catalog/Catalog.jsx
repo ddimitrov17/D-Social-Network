@@ -1,13 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import PostSkeleton from "../Post/postSkeleton";
 // import LeftPane from "../leftPane/LeftPane";
 // import RightPane from "../rightPane/RightPane";
-import UserContext from "../contexts/UserContext";
 import './Catalog.css'
 
 export default function Catalog() {
-    const { user } = useContext(UserContext);
-    console.log(user.likedPosts)
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
