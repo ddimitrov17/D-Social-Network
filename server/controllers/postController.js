@@ -128,21 +128,37 @@ async function likePost(req, res) {
             await Post.updateOne({ _id: postId }, { $pull: { likes: userId } });
             await User.updateOne({ _id: userId }, { $pull: { likedPosts: postId } });
 
-            const updatedLikes = post.likes.filter((id) => id.toString() !== userId.toString());
-            res.status(200).json(updatedLikes);
+            res.status(200).json({ liked: false });
         } else {
             post.likes.push(userId);
             await User.updateOne({ _id: userId }, { $push: { likedPosts: postId } });
             await post.save();
 
-            const updatedLikes = post.likes;
-            res.status(200).json(updatedLikes);
+            res.status(200).json({ liked: true });
         }
     } catch (error) {
         console.log("Error in likePost controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
 };
+
+async function getLikeStatus(req, res) {
+    try {
+        const userId = req.user._id;
+        const { id: postId } = req.params;
+
+        const user = await User.findById(userId).lean();
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const liked = user.likedPosts.includes(postId);
+        res.status(200).json({ liked });
+    } catch (error) {
+        console.error("Error in getLikeStatus controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
 
 
 
@@ -151,5 +167,6 @@ module.exports = {
     getAllPosts,
     getPostById,
     commentOnPost,
-    likePost
+    likePost,
+    getLikeStatus
 }
