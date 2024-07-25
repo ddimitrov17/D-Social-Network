@@ -45,7 +45,7 @@ export default function App() {
     <div className="app">
       <UserContext.Provider value={{ user: currentUser }}>
         {!hidePanes && <LeftPane />}
-        {/* {!hidePanes && <Home />} */}
+        {location.pathname=='/create' && <Home />}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/catalog' element={<Catalog />} />
