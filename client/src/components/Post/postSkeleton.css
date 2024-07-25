@@ -6,7 +6,7 @@
     gap: 1rem;
     width: 100%;
     border-bottom: 1px solid gray;
-    position: relative; 
+    position: relative;
 }
 
 .post-header {
@@ -61,17 +61,19 @@
 
 .post-image {
     margin-left: 2rem;
-    width: 530px; /* Edit from 89% */
+    width: 530px;
+    /* Edit from 89% */
     border-radius: 8px;
 }
 
 .post-functionality {
     display: flex;
     justify-content: space-around;
-    border-top: 1px solid gray; /*TODO: Remove*/
+    border-top: 1px solid gray;
+    /*TODO: Remove*/
 }
 
-.functionalities {
+.functionalities-like {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -80,17 +82,46 @@
     background-color: #000000;
 }
 
-.functionalities svg {
-    width: 1.5rem; 
-    height: 1.5rem; 
+.functionalities-comment {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #555;
+    font-size: 0.9rem;
+    background-color: #000000;
+}
+
+
+.functionalities-bookmark {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #555;
+    font-size: 0.9rem;
+    background-color: #000000;
+}
+
+.functionalities-like svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.functionalities-comment svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.functionalities-bookmark svg {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 .button-container {
     display: flex;
-    gap: 0.5rem; 
+    gap: 0.5rem;
     position: absolute;
-    top: 15px; 
-    right: 10px; 
+    top: 15px;
+    right: 10px;
 }
 
 .options-button {
@@ -100,10 +131,10 @@
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem; 
+    font-size: 0.75rem;
 }
 
 .options-button:hover {
@@ -111,14 +142,14 @@
 }
 
 .options-button svg {
-    width: 1.3rem; 
-    height: 1.3rem; 
+    width: 1.3rem;
+    height: 1.3rem;
     color: #696d67;
 }
 
 .dropdown-menu {
     position: absolute;
-    top: 15px; 
+    top: 15px;
     right: 65px;
     background-color: #000000;
     border: 1px solid #353535;
@@ -129,16 +160,25 @@
 }
 
 .dropdown-menu.visible {
-    display: block; 
+    display: block;
 }
 
 .dropdown-item {
     padding: 0.5rem 1rem;
     color: white;
     cursor: pointer;
-	font-weight: bold;
+    font-weight: bold;
 }
 
 .dropdown-item:hover {
     background-color: #333;
+}
+
+
+[name="gray"] {
+    color: #555;
+}
+
+[name="red"] {
+    color: red;
 }

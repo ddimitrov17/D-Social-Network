@@ -23,20 +23,21 @@ export default function Details() {
         <>
             <div>
                 <PostSkeleton detailsPageToggle={true}
+                    postId={id}
                     text={postDetails?.text}
                     fullName={postDetails?.user?.fullName}
                     username={postDetails?.user?.username}
                     image={postDetails?.img}
                 />
-                <PostReply postId={id}/>
+                <PostReply postId={id} />
                 {postDetails?.comments.reverse().map(currentComment => (
                     <PostSkeleton text={currentComment.text}
                         key={currentComment._id}
                         fullName={currentComment.user.fullName}
                         username={currentComment.user.username}
                         detailsPageToggle={true}
-                        image={currentComment.img} 
-                        commentToggle={true}/>
+                        image={currentComment.img}
+                        commentToggle={true} />
                 ))}
             </div>
         </>

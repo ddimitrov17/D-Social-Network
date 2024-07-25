@@ -1,12 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PostSkeleton from "../Post/postSkeleton";
 // import LeftPane from "../leftPane/LeftPane";
 // import RightPane from "../rightPane/RightPane";
+import UserContext from "../contexts/UserContext";
 import './Catalog.css'
 
 export default function Catalog() {
+    const { user } = useContext(UserContext);
+    console.log(user.likedPosts)
     const [posts, setPosts] = useState([]);
-    
+
     useEffect(() => {
         const fetchPosts = async () => {
             try {
@@ -27,7 +30,14 @@ export default function Catalog() {
 
             {/* <LeftPane /> */}
             <div className="catalog">
-                {posts.map(currentPost => <PostSkeleton key={currentPost._id} text={currentPost.text} image={currentPost?.img} username={currentPost.user.username} fullName={currentPost.user.fullName} postId={currentPost._id} detailsPageToggle={false} commentToggle={false}/>)}
+                {posts.map(currentPost => <PostSkeleton key={currentPost._id}
+                    text={currentPost.text}
+                    image={currentPost?.img}
+                    username={currentPost.user.username}
+                    fullName={currentPost.user.fullName}
+                    postId={currentPost._id}
+                    detailsPageToggle={false}
+                    commentToggle={false} />)}
             </div>
             {/* <div className="catalog-right-pane">
                 WHO TO FOLLOW SECTION
