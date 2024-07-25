@@ -158,7 +158,33 @@ async function getLikeStatus(req, res) {
         console.error("Error in getLikeStatus controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
-}
+};
+
+async function deletePost(req, res) {
+    try {
+        const { id: postId } = req.params;
+        const post = await Post.findById(postId);
+        if (!post) {
+            return res.status(404).json({ error: "Post not found" });
+        }
+
+        if (post.user.toString() !== req.user._id.toString()) { //TODO: remove after implementing protectRoute for Author
+            return res.status(401).json({ error: "You are not authorized to delete this post" });
+        }
+
+        if (post.img) {
+            const imgId = post.img.split("/").pop().split(".")[0];
+            await cloudinary.uploader.destroy(imgId);
+        }
+
+        await Post.findByIdAndDelete(postId);
+
+        res.status(200).json({ message: "Post deleted successfully" });
+    } catch (error) {
+        console.log("Error in deletePost controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
 
 
 
@@ -168,5 +194,6 @@ module.exports = {
     getPostById,
     commentOnPost,
     likePost,
-    getLikeStatus
+    getLikeStatus,
+    deletePost
 }
