@@ -89,7 +89,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       <div className='content-skeleton'>{text}</div>
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
       <div className='post-functionality'>
-        {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'red'} onClick={likeFunctionality}>{likeSVG}</button>}
+        {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>{likeSVG}</button>}
         {!commentToggle && <button className='functionalities-comment'>{commentSVG}</button>}
         {!commentToggle && <button className='functionalities-bookmark'>{bookmarkSVG}</button>}
       </div>
