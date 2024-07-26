@@ -64,26 +64,23 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
     if (!postId) {
       throw new Error("Post ID is missing.");
     }
-    confirm('Are you sure you want to delete this post?');
-    if (confirm) {
-      try {
-        const response = await fetch(`http://localhost:5000/api/posts/delete/${postId}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          credentials: 'include',
-        });
+    try {
+      const response = await fetch(`http://localhost:5000/api/posts/delete/${postId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+      });
 
-        if (!response.ok) {
-          throw new Error('Failed to delete the post');
-        }
-
-        console.log('Post deleted successfully!');
-        navigate('/catalog');
-      } catch (error) {
-        console.error('There was a problem with the delete functionality:', error);
+      if (!response.ok) {
+        throw new Error('Failed to delete the post');
       }
+
+      console.log('Post deleted successfully!');
+      navigate('/catalog');
+    } catch (error) {
+      console.error('There was a problem with the delete functionality:', error);
     }
   }
 
