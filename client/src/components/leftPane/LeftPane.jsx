@@ -59,7 +59,7 @@ export default function LeftPane() {
           <button className="account">
             <div>
               <div className="name">{user.fullName}</div>
-              <div className="username">{user.username}</div>
+              <div className="username">{user.username ? `@${user.username}` : ''}</div>
             </div>
           </button>
         </footer>
