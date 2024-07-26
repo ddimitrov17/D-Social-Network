@@ -186,6 +186,32 @@ async function deletePost(req, res) {
     }
 };
 
+async function editPost(req, res) {
+    try {
+        const { id: postId } = req.params;
+        const post = await Post.findById(postId);
+        if (!post) {
+            return res.status(404).json({ error: "Post not found" });
+        }
+
+        if (post.user.toString() !== req.user._id.toString()) { //TODO: remove after implementing protectRoute for Author
+            return res.status(401).json({ error: "You are not authorized to edit this post" });
+        }
+
+        const { text } = req.body;
+        let { img } = req.body;
+        post.text = text;
+        if (img) {
+            post.img = img;
+        }
+        await post.save();
+        res.status(200).json({ message: "Post edited successfully" });
+    } catch (error) {
+        console.log("Error in editPost controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
+
 
 
 module.exports = {
@@ -195,5 +221,6 @@ module.exports = {
     commentOnPost,
     likePost,
     getLikeStatus,
-    deletePost
+    deletePost,
+    editPost
 }

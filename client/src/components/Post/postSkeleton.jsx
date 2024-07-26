@@ -88,7 +88,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   }
 
   function editHandler() {
-    navigate(`/edit/${postId}`, { state: { text, image } });
+    navigate(`/edit/${postId}`, { state: { text, image, postId } });
   }
 
   return (
