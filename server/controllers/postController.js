@@ -69,7 +69,7 @@ async function getPostById(req, res) {
                 path: "comments.user",
                 select: "-password",
             });
-        console.log(post);
+        // console.log(post);
         if (!post) {
             res.status(400).json({ error: "Can't find this post" });
         }
@@ -174,7 +174,7 @@ async function deletePost(req, res) {
 
         if (post.img) {
             const imgId = post.img.split("/").pop().split(".")[0];
-            await cloudinary.uploader.destroy(imgId);
+            await v2.uploader.destroy(imgId);
         }
 
         await Post.findByIdAndDelete(postId);
@@ -201,7 +201,11 @@ async function editPost(req, res) {
         const { text } = req.body;
         let { img } = req.body;
         post.text = text;
-        if (img) {
+        if (post?.img !== img) { // if the image is changed
+            const imgId = post.img.split("/").pop().split(".")[0];
+            await v2.uploader.destroy(imgId);
+            const upload = await v2.uploader.upload(img);
+            img = upload.secure_url;
             post.img = img;
         }
         await post.save();
