@@ -1,6 +1,7 @@
 # Social-Media-Project
 
-A full-featured social network application built with React and Node.js. The app allows users to create, like, comment, edit, and delete posts. Users can also view a catalog of all posts and see detailed views of individual posts. Authentication is implemented to ensure secure access to the app's features.
+A 'social network' application built with React and Node.js. The app allows users to create, like, comment, edit, and delete posts. Users can also view a catalog of all posts and see detailed views of individual posts. Authentication is implemented to ensure secure access to the app's features but that does not stop guest users
+of seeing the catalog without of course having the ability to interact with it in any way.
 
 ## Features
 
