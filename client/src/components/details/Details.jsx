@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react';
 import PostSkeleton from '../Post/postSkeleton';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import PostReply from '../postReply/PostReply';
 
 export default function Details() {
@@ -18,7 +18,7 @@ export default function Details() {
         };
         fetchPostDetails();
     }, [id]);
-    // console.log(id)
+
     return (
         <>
             <div>

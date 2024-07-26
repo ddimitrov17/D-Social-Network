@@ -11,6 +11,7 @@ import UserContext from './components/contexts/UserContext';
 import CreatePost from './components/createPost/CreatePost';
 import Logout from './components/logout/Logout';
 import Details from './components/details/Details';
+import EditPost from './components/editPost/Edit';
 
 export default function App() {
   const location = useLocation();
@@ -56,7 +57,7 @@ export default function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/logout" element={<Logout />} />
           <Route path='/details/:id' element={<Details />}></Route>
-          {/* <Route path="/create" element={<CreatePost />} /> */}
+          <Route path="/edit/:id" element={<EditPost />} />
         </Routes>
         {!hidePanes && <RightPane />}
       </UserContext.Provider>

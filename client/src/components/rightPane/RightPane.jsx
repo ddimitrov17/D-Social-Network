@@ -3,7 +3,7 @@ import './rightPane.css'
 export default function RightPane() {
   return (
     <div className="right-pane">
-      Right Pane
+      <div className='whoToFollow'>Who to follow</div>
     </div>
     
   )

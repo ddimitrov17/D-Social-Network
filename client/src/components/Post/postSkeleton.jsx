@@ -7,10 +7,6 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   // const [likes, setLikes] = useState(initialLikes);
   const [likedByUser, setLikedByUser] = useState(false);
   const navigate = useNavigate();
-  // function detailsClickHandler() {
-  //   navigate(`/details/${postId}`);
-  //   console.log(postId);
-  // }
 
   useEffect(() => {
     async function fetchLikeStatus() {
@@ -91,10 +87,14 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
     }
   }
 
+  function editHandler() {
+    navigate(`/edit/${postId}`, { state: { text, image } });
+  }
+
   return (
     <div className='post-skeleton'>
       <div className="button-container">
-        {!commentToggle && (detailsPageToggle && (<button className='options-button'>
+        {!commentToggle && (detailsPageToggle && (<button className='options-button' onClick={editHandler}>
           {editSVG}
         </button>))}
         {!commentToggle && (detailsPageToggle && (<button className='options-button' onClick={deleteFunctionality}>
