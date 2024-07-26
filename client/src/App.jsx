@@ -51,13 +51,14 @@ export default function App() {
           <Route path='/' element={<Home />} />
           <Route path='/catalog' element={<Catalog />} />
           <Route path="/explore" element={<div>Explore</div>} />
-          <Route path="/bookmarks" element={<div>Bookmarks</div>} />
-          <Route path="/profile" element={<div>Profile</div>} />
-          <Route path="/register" element={<SignUp />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/logout" element={<Logout />} />
-          <Route path='/details/:id' element={<Details />}></Route>
-          <Route path="/edit/:id" element={<EditPost />} />
+          <Route path="/bookmarks" element={<div>Bookmarks</div>} /> //Login Protect
+          <Route path="/profile" element={<div>Profile</div>} /> //Login Protect
+          <Route path="/register" element={<SignUp />} /> //Already Logged In Protect
+          <Route path="/login" element={<LoginPage />} /> //Already Logged In Protect
+          <Route path="/logout" element={<Logout />} /> //Login Protect
+          <Route path='/details/:id' element={<Details />}/>
+          <Route path="/edit/:id" element={<EditPost />} /> //Login Protect //Author Protect
+          {/* <Route path='/create' element={<CreatePost/>}/> */}
         </Routes>
         {!hidePanes && <RightPane />}
       </UserContext.Provider>
