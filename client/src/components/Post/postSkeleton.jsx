@@ -4,10 +4,10 @@ import { bookmarkSVG, commentSVG, likeSVG, deleteSVG, editSVG, detailsSVG } from
 import { useNavigate } from 'react-router-dom';
 import { cloneWithProps } from './svgClone';
 
-export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle, numberOfComments,numberOfLikes }) {
+export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle, numberOfComments, numberOfLikes, authorProfilePicture }) {
   // const [likes, setLikes] = useState(initialLikes);
   const [likedByUser, setLikedByUser] = useState(false);
-  const [totalLikes,setTotalLikes]=useState(numberOfLikes)
+  const [totalLikes, setTotalLikes] = useState(numberOfLikes)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -107,7 +107,9 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
         ))}
       </div>
       <div className='post-header'>
-        <div className='avatar-skeleton'></div>
+        <div className='avatar-skeleton'>
+          <img src={authorProfilePicture} alt="" />
+        </div>
         <div className='header-text'>
           <div className='name-skeleton'>{fullName}</div>
           <div className='username-skeleton'>{'@'}{username}</div>
@@ -117,7 +119,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
       <div className='post-functionality'>
         {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>
-          {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : ''})}{totalLikes}
+          {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : '' })}{totalLikes}
         </button>}
         {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}{numberOfComments}</button>}
         {!commentToggle && <button className='functionalities-bookmark'>{bookmarkSVG}</button>}

@@ -36,7 +36,8 @@ export default function Catalog() {
                     detailsPageToggle={false}
                     commentToggle={false}
                     numberOfLikes={currentPost.likes.length}
-                    numberOfComments={currentPost.comments.length} />)}
+                    numberOfComments={currentPost.comments.length}
+                    authorProfilePicture={currentPost.user.profilePicture} />)}
             </div>
             {/* <div className="catalog-right-pane">
                 WHO TO FOLLOW SECTION
