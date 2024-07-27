@@ -216,6 +216,29 @@ async function editPost(req, res) {
     }
 }
 
+async function getTopThreePosts(req, res) {
+    try {
+        const posts = await Post.find()
+            // .sort({ likes : -1 })
+            .populate({
+                path: "user",
+                select: "-password",
+            })
+            .populate({
+                path: "comments.user",
+                select: "-password",
+            });
+        const sortedPosts = posts.sort((a, b) => b.likes.length - a.likes.length).slice(0, 3);
+        console.log(sortedPosts);
+        if (posts.length === 0) {
+            return res.status(200).json([]);
+        }
+        res.status(200).json(sortedPosts);
+    } catch (error) {
+        console.log("Error in getAllPosts controller", error);
+    }
+}
+
 
 
 module.exports = {
@@ -226,5 +249,6 @@ module.exports = {
     likePost,
     getLikeStatus,
     deletePost,
-    editPost
+    editPost,
+    getTopThreePosts
 }
