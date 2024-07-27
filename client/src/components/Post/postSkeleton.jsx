@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import './postSkeleton.css';
 import { bookmarkSVG, commentSVG, likeSVG, deleteSVG, editSVG, detailsSVG } from './postSVG';
 import { useNavigate } from 'react-router-dom';
+import { cloneWithProps } from './svgClone';
 
 export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle }) {
   // const [likes, setLikes] = useState(initialLikes);
@@ -113,7 +114,9 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       <div className='content-skeleton'>{text}</div>
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
       <div className='post-functionality'>
-        {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>{likeSVG}</button>}
+        {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>
+          {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : ''})}
+        </button>}
         {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}</button>}
         {!commentToggle && <button className='functionalities-bookmark'>{bookmarkSVG}</button>}
       </div>

@@ -229,7 +229,7 @@ async function getTopThreePosts(req, res) {
                 select: "-password",
             });
         const sortedPosts = posts.sort((a, b) => b.likes.length - a.likes.length).slice(0, 3);
-        console.log(sortedPosts);
+        // console.log(sortedPosts);
         if (posts.length === 0) {
             return res.status(200).json([]);
         }
