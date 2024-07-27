@@ -36,7 +36,8 @@ export default function Home() {
 						detailsPageToggle={false}
 						commentToggle={false}
 						numberOfComments={currentPost.comments.length}
-						numberOfLikes={currentPost.likes.length} />))}
+						numberOfLikes={currentPost.likes.length}
+						authorProfilePicture={currentPost.user.profilePicture} />))}
 				</div>
 			</>
 		</div>
