@@ -18,17 +18,23 @@ export default function Details() {
         };
         fetchPostDetails();
     }, [id]);
-
+    console.log(postDetails)
     return (
         <>
             <div>
-                <PostSkeleton detailsPageToggle={true}
-                    postId={id}
-                    text={postDetails?.text}
-                    fullName={postDetails?.user?.fullName}
-                    username={postDetails?.user?.username}
-                    image={postDetails?.img}
-                />
+                {postDetails && (
+                    <PostSkeleton
+                        detailsPageToggle={true}
+                        postId={id}
+                        text={postDetails.text}
+                        fullName={postDetails.user?.fullName}
+                        username={postDetails.user?.username}
+                        image={postDetails.img}
+                        numberOfComments={postDetails.comments?.length}
+                        numberOfLikes={postDetails.likes?.length}
+                    />
+                )}
+
                 <PostReply postId={id} />
                 {postDetails?.comments.reverse().map(currentComment => (
                     <PostSkeleton text={currentComment.text}

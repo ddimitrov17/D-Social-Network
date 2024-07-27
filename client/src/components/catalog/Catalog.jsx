@@ -34,7 +34,9 @@ export default function Catalog() {
                     fullName={currentPost.user.fullName}
                     postId={currentPost._id}
                     detailsPageToggle={false}
-                    commentToggle={false} />)}
+                    commentToggle={false}
+                    numberOfLikes={currentPost.likes.length}
+                    numberOfComments={currentPost.comments.length} />)}
             </div>
             {/* <div className="catalog-right-pane">
                 WHO TO FOLLOW SECTION

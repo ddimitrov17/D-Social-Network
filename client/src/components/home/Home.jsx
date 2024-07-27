@@ -19,6 +19,7 @@ export default function Home() {
 
 		fetchPosts();
 	}, []);
+	console.log(posts);
 	return (
 		<div className="home">
 			<>
@@ -26,14 +27,16 @@ export default function Home() {
 					<div className='home-header'>
 						<div className='home-tab'>Most liked posts</div>
 					</div>
-					{posts.map(currentPost => <PostSkeleton key={currentPost._id}
+					{posts && (posts.map(currentPost => <PostSkeleton key={currentPost._id}
 						text={currentPost.text}
 						image={currentPost?.img}
 						username={currentPost.user.username}
 						fullName={currentPost.user.fullName}
 						postId={currentPost._id}
 						detailsPageToggle={false}
-						commentToggle={false} />)}
+						commentToggle={false}
+						numberOfComments={currentPost.comments.length}
+						numberOfLikes={currentPost.likes.length} />))}
 				</div>
 			</>
 		</div>

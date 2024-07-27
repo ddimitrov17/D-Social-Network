@@ -4,9 +4,10 @@ import { bookmarkSVG, commentSVG, likeSVG, deleteSVG, editSVG, detailsSVG } from
 import { useNavigate } from 'react-router-dom';
 import { cloneWithProps } from './svgClone';
 
-export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle }) {
+export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle, numberOfComments,numberOfLikes }) {
   // const [likes, setLikes] = useState(initialLikes);
   const [likedByUser, setLikedByUser] = useState(false);
+  const [totalLikes,setTotalLikes]=useState(numberOfLikes)
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -55,6 +56,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
 
       const { liked } = await response.json();
       setLikedByUser(liked);
+      setTotalLikes(prevLikes => liked ? prevLikes + 1 : prevLikes - 1);
       console.log('Post liked/unliked successfully!');
     } catch (error) {
       console.error('There was a problem with the like functionality:', error);
@@ -115,9 +117,9 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
       <div className='post-functionality'>
         {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>
-          {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : ''})}
+          {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : ''})}{totalLikes}
         </button>}
-        {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}</button>}
+        {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}{numberOfComments}</button>}
         {!commentToggle && <button className='functionalities-bookmark'>{bookmarkSVG}</button>}
       </div>
     </div>
