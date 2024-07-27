@@ -20,11 +20,11 @@ const userSchema = new Schema(
         },
         profilePicture: {
             type: String,
-            default: "" //TODO: Add default image
+            default: "https://res.cloudinary.com/dv7qy8zgi/image/upload/v1722093871/wa7oxvqtkfbmk1uwco16.png" 
         },
         coverImage: {
             type: String,
-            default: "" //TODO: Add default cover image
+            default: "https://res.cloudinary.com/dv7qy8zgi/image/upload/v1722093871/p3uz1mdb81jqepivbyjg.png" 
         },
         bio: {
             type: String,
