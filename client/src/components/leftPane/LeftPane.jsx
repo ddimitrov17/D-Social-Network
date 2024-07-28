@@ -19,7 +19,9 @@ export default function LeftPane() {
     setIsModalOpen(false);
     navigate(-1)
   }
-
+  function accountButtonHandler() {
+    navigate(`/profile/${user.username}`);
+  }
   return (
     <div className="left-pane">
       <div className="container">
@@ -56,7 +58,7 @@ export default function LeftPane() {
         <button className="post" onClick={createPostHandler}>Post</button>
         {isModalOpen && <CreatePost onClose={closeModalHandler} />}
         <footer>
-          <button className="account">
+          <button className="account" onClick={accountButtonHandler}>
             <img className='photo' src={user.profilePicture} alt="Profile Picture" />
             <div>
               <div className="name">{user.fullName}</div>
