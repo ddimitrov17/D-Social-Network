@@ -42,7 +42,7 @@ export default function LeftPane() {
           {!user && <NavLink to="/register" activeclassname="selected">
             <span>{signup} Sign Up</span>
           </NavLink>}
-          {!user  && <NavLink to="/login" activeclassname="selected">
+          {!user && <NavLink to="/login" activeclassname="selected">
             <span>{login} Sign In</span>
           </NavLink>}
           {user && <NavLink to="/logout" activeclassname="selected">
@@ -57,6 +57,7 @@ export default function LeftPane() {
         {isModalOpen && <CreatePost onClose={closeModalHandler} />}
         <footer>
           <button className="account">
+            <img className='photo' src={user.profilePicture} alt="Profile Picture" />
             <div>
               <div className="name">{user.fullName}</div>
               <div className="username">{user.username ? `@${user.username}` : ''}</div>
