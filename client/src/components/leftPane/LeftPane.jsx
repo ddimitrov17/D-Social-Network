@@ -7,7 +7,7 @@ import CreatePost from '../createPost/CreatePost';
 
 export default function LeftPane() {
   const { user } = useContext(UserContext);
-  console.log(user); //TODO: remove 
+  // console.log(user); //TODO: remove 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   function createPostHandler() {
