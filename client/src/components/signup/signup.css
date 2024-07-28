@@ -86,7 +86,7 @@
   }
   
   .signup-button {
-    background-color: #67a742;
+    background-color: #bb6016;
     color: white;
     border: none;
     border-radius: 9999px;
@@ -97,7 +97,7 @@
   .signup-button-outline {
     background-color: transparent;
     color: white;
-    border: 1px solid #67a742;
+    border: 1px solid #bb6016;
     border-radius: 9999px;
     padding: 0.75rem 1.5rem;
     cursor: pointer;

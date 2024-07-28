@@ -119,7 +119,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
       <div className='post-functionality'>
         {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>
-          {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : '' })}{totalLikes}
+          {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : 'none' })}{totalLikes}
         </button>}
         {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}{numberOfComments}</button>}
         {!commentToggle && <button className='functionalities-bookmark'>{bookmarkSVG}</button>}

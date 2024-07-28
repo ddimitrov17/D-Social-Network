@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column; 
   padding: 5rem;
-  background-color: black;
+  background-color: #013534;
   border-radius: 5px;
   width: 400px;
   height: 150px;
@@ -36,7 +36,7 @@
   font-size: 1.125rem;
   resize: none;
   outline: none;
-  background: black;
+  background: #013534;
   cursor: inherit;
   color: white;
   border: 1px solid gray;
@@ -47,7 +47,7 @@
   padding: 5px;
   border: 1px solid gray;
   border-radius: 5px;
-  background-color: black;
+  background-color: #013534;
   width: 50%;
   color: white;
 }
@@ -85,12 +85,20 @@
 }
 
 .create-post .button {
-  background-color: #67a742;
+  background-color: #cd5c00;
   border-radius: 9999px;
   color: white;
   position: absolute; 
   bottom: 2rem; 
   right: 2rem; 
+}
+
+.create-post .button:hover {
+  background-color: #bb6016;
+}
+
+.create-post .button:hover {
+  background-color: #bb6016;
 }
 
 .close-button {

@@ -35,7 +35,7 @@
 .name-skeleton,
 .username-skeleton,
 .content-skeleton {
-    background-color: #000000;
+    background-color: #001d1c;
     border-radius: 0.5rem;
 }
 
@@ -79,7 +79,7 @@
     gap: 0.5rem;
     color: #555;
     font-size: 0.9rem;
-    background-color: #000000;
+    background-color: #001d1c;
 }
 
 .functionalities-comment {
@@ -88,7 +88,7 @@
     gap: 0.3rem;
     color: #555;
     font-size: 1rem;
-    background-color: #000000;
+    background-color: #001d1c;
 }
 
 
@@ -98,7 +98,7 @@
     gap: 0.5rem;
     color: #555;
     font-size: 0.9rem;
-    background-color: #000000;
+    background-color: #001d1c;
 }
 
 .functionalities-like svg {
@@ -180,5 +180,5 @@
 }
 
 [name="green"] {
-    color: #67a742;
+    color: #cd5c00;
 }

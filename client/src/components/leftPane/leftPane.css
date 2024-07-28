@@ -58,7 +58,7 @@
 
 .left-pane button.post {
   display: block;
-  background: #67a742;
+  background: #cd5c00;
   color: #fff;
   width: 14em;
   height: 3em;
@@ -70,7 +70,7 @@
 }
 
 .left-pane button.post:hover {
-  background: #5c8643;
+  background: #bb6016;
 }
 
 .left-pane footer {
