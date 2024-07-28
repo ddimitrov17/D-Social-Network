@@ -59,7 +59,7 @@ export default function LeftPane() {
         {isModalOpen && <CreatePost onClose={closeModalHandler} />}
         <footer>
           <button className="account" onClick={accountButtonHandler}>
-            <img className='photo' src={user.profilePicture} alt="Profile Picture" />
+            {user && <img className='photo' src={user.profilePicture} alt="Profile Picture" />}
             <div>
               <div className="name">{user.fullName}</div>
               <div className="username">{user.username ? `@${user.username}` : ''}</div>
