@@ -36,9 +36,9 @@ export default function LeftPane() {
           <NavLink to="/bookmarks" activeclassname="selected">
             <span>{bookmarks} Bookmarks</span>
           </NavLink>
-          <NavLink to="/profile" activeclassname="selected">
+          {user && <NavLink to={`/profile/${user.username}`} activeclassname="selected">
             <span>{profile} Profile</span>
-          </NavLink>
+          </NavLink>}
           {!user && <NavLink to="/register" activeclassname="selected">
             <span>{signup} Sign Up</span>
           </NavLink>}

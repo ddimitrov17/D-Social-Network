@@ -13,7 +13,7 @@ postRoutes.get("/:id/status",isUserLogged,getLikeStatus);
 postRoutes.delete('/delete/:id',isUserLogged,deletePost);
 postRoutes.put('/edit/:id',isUserLogged,editPost);
 postRoutes.get('/home/top',getTopThreePosts);
-postRoutes.get('/profile/:username',isUserLogged,getProfile);
+postRoutes.get('/profile/:username',getProfile);
 
 module.exports = {
     postRoutes

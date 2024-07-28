@@ -241,7 +241,6 @@ async function getTopThreePosts(req, res) {
 async function getProfile(req, res) {
     try {
         const { username } = req.params;
-
         const user = await User.findOne({ username });
         if (!user) {
             return res.status(404).json({ error: "User not found" });
