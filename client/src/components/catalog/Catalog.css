@@ -1,7 +1,7 @@
 .catalog {
     overflow: auto;
     display: grid;
-    width: 600px;
+    width: 595px;
 }
 
 .catalog-right-pane {
