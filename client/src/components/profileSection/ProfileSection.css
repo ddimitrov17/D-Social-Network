@@ -1,0 +1,73 @@
+.profile-page {
+    width: 595px;
+    margin: 0 auto; /* Center the profile section horizontally */
+}
+
+.profile-section {
+    height: 32rem;
+    border-bottom: 1px solid gray;
+    position: absolute; /* Changed from absolute to relative */
+}
+
+.cover-image img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-picture {
+    width: 150px; /* Size of the profile picture */
+    height: 150px; /* Size of the profile picture */
+    border-radius: 50%; /* Make the profile picture round */
+    overflow: hidden; /* Ensure the profile picture stays within the bounds */
+    position: relative;
+    left: 15%;
+    transform: translate(-50%, -50%); /* Center the profile picture horizontally */
+    border: 4px solid black; /* Optional: Add a white border around the profile picture for better visibility */
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire round container */
+}
+
+.user-credentials {
+    position: absolute;
+    top: 55%;
+    left: 3%;
+}
+
+.user-fullname {
+    position: relative;
+    left: 3%;
+    margin-top: 0px;
+    font-size: 1.4rem;
+    color: white;
+    font-weight: bold;
+}
+
+.user-username {
+    font-weight: normal;
+    font-size: 1rem;
+    color: gray;
+}
+
+.buttons {
+    position: absolute;
+    bottom: 0%;
+    width: 100%;
+}
+
+.posts-button, .likes-button {
+    background-color: transparent;
+    width: 50%;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.posts-button:hover, .likes-button:hover {
+    background-color: #67a742;
+}

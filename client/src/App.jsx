@@ -12,6 +12,7 @@ import CreatePost from './components/createPost/CreatePost';
 import Logout from './components/logout/Logout';
 import Details from './components/details/Details';
 import EditPost from './components/editPost/Edit';
+import ProfileSection from './components/profileSection/ProfileSection';
 
 export default function App() {
   const location = useLocation();
@@ -52,7 +53,7 @@ export default function App() {
           <Route path='/catalog' element={<Catalog />} />
           <Route path="/explore" element={<div>Explore</div>} />
           <Route path="/bookmarks" element={<div>Bookmarks</div>} /> //Login Protect
-          <Route path="/profile" element={<div>Profile</div>} /> //Login Protect
+          <Route path="/profile" element={<ProfileSection/>} /> //Login Protect
           <Route path="/register" element={<SignUp />} /> //Already Logged In Protect
           <Route path="/login" element={<LoginPage />} /> //Already Logged In Protect
           <Route path="/logout" element={<Logout />} /> //Login Protect
