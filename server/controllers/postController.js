@@ -261,6 +261,33 @@ async function getProfile(req, res) {
         console.log("Error in getProfile controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
+};
+
+async function postExplore(req,res) {
+    const { query } = req.query;
+    // console.log(query);
+    if (!query) {
+        return res.status(400).json({ error: 'Query parameter is required' });
+    }
+
+    try {
+        const posts = await Post.find({
+            text: { $regex: query, $options: 'i' }
+        })
+        .populate({
+            path: "user",
+            select: "-password",
+        })
+        .populate({
+            path: "comments.user",
+            select: "-password",
+        });
+
+        res.json(posts);
+    } catch (error) {
+        console.log('Search Error:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
 }
 
 
@@ -275,5 +302,6 @@ module.exports = {
     deletePost,
     editPost,
     getTopThreePosts,
-    getProfile
+    getProfile,
+    postExplore
 }

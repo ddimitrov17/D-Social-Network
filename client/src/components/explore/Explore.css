@@ -1,0 +1,31 @@
+.search-section {
+    position: relative;
+    width: 595px;
+}
+
+.search-panel {
+    height: 10vh;
+    border-bottom: 1px solid gray;
+}
+
+.search-input {
+    background-color: transparent ;
+    border: 1px solid gray;
+    width: 70%;
+    margin-left: 25px;
+    border-radius: 8px;
+    height: 3vh;
+    color: white;
+}
+
+.search-button {
+    position: relative;
+    right: -2.5rem;
+    margin-top: 25px;
+    background-color: #cd5c00;
+    color: white;
+}
+
+.search-button:hover {
+    background-color: #bb6016;
+}
