@@ -43,7 +43,7 @@ export default function Explore() {
                     <form className="search-form">
                         <input type="text"
                             className='search-input'
-                            placeholder='Search'
+                            placeholder='Search Posts...'
                             onChange={searchHandler} />
                     </form>
                 </div>

@@ -11,21 +11,21 @@
 .search-input {
     background-color: transparent ;
     border: 1px solid gray;
-    width: 70%;
-    margin-left: 25px;
+    width: 80%;
+    margin: 25px;
     border-radius: 8px;
-    height: 3vh;
+    height: 4vh;
     color: white;
 }
 
-.search-button {
+/* .search-button {
     position: relative;
     right: -2.5rem;
     margin-top: 25px;
     background-color: #cd5c00;
     color: white;
-}
+} */
 
-.search-button:hover {
+/* .search-button:hover {
     background-color: #bb6016;
-}
+} */
