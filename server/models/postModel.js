@@ -1,4 +1,5 @@
 const { Schema, SchemaTypes, model } = require('mongoose');
+const { User } = require('./userModel');
 
 const postSchema = new Schema(
     {
@@ -34,7 +35,12 @@ const postSchema = new Schema(
                     type: String
                 }
             }
-        ]
+        ],
+        bookmarkedBy: {
+            type: Array,
+            ref: "User",
+            default: []
+        }
     }, { timestamps: true }
 );
 
