@@ -103,6 +103,7 @@ async function getBookmarkStatus(req, res) {
     }
 };
 
+
 module.exports = {
     likePost,
     getLikeStatus,

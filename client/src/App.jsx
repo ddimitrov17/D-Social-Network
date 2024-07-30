@@ -14,6 +14,7 @@ import Details from './components/details/Details';
 import EditPost from './components/editPost/Edit';
 import ProfileSection from './components/profileSection/ProfileSection';
 import Explore from './components/explore/Explore';
+import Bookmarks from './components/bookmarks/Bookmarks';
 
 export default function App() {
   const location = useLocation();
@@ -53,7 +54,7 @@ export default function App() {
           <Route path='/' element={<Home />} />
           <Route path='/catalog' element={<Catalog />} />
           <Route path="/explore" element={<Explore/>} />
-          <Route path="/bookmarks" element={<div>Bookmarks</div>} /> //Login Protect
+          <Route path="/bookmarks" element={<Bookmarks/>} /> //Login Protect
           <Route path="/profile/:username" element={<ProfileSection/>} /> //Login Protect
           <Route path="/register" element={<SignUp />} /> //Already Logged In Protect
           <Route path="/login" element={<LoginPage />} /> //Already Logged In Protect
