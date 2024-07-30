@@ -61,6 +61,7 @@ export default function Explore() {
                         commentToggle={false}
                         numberOfComments={currentPost.comments.length}
                         numberOfLikes={currentPost.likes.length}
+                        numberOfBookmarks={currentPost.bookmarkedBy.length}
                     />
                 ))}
             </div>

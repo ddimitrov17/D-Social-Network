@@ -4,16 +4,18 @@ import { bookmarkSVG, commentSVG, likeSVG, deleteSVG, editSVG, detailsSVG } from
 import { useNavigate } from 'react-router-dom';
 import { cloneWithProps } from './svgClone';
 
-export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle, numberOfComments, numberOfLikes, authorProfilePicture }) {
+export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle, numberOfComments, numberOfLikes, authorProfilePicture, numberOfBookmarks }) {
   // const [likes, setLikes] = useState(initialLikes);
   const [likedByUser, setLikedByUser] = useState(false);
   const [totalLikes, setTotalLikes] = useState(numberOfLikes)
+  const [bookmarkedByUser, setBookmarkedByUser] = useState(false);
+  const [totalBookmarks, setTotalBookmarks] = useState(numberOfBookmarks)
   const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchLikeStatus() {
       try {
-        const response = await fetch(`http://localhost:5000/api/posts/${postId}/status`, {
+        const response = await fetch(`http://localhost:5000/api/user/${postId}/status`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -41,7 +43,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       throw new Error("Post ID is missing.");
     }
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/like/${postId}`, {
+      const response = await fetch(`http://localhost:5000/api/user/like/${postId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -60,6 +62,59 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       console.log('Post liked/unliked successfully!');
     } catch (error) {
       console.error('There was a problem with the like functionality:', error);
+    }
+  };
+
+  useEffect(() => {
+    async function fetchBookmarkStatus() {
+      try {
+        const response = await fetch(`http://localhost:5000/api/user/bookmarkstatus/${postId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          credentials: 'include',
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch bookmark status');
+        }
+
+        const { bookmarked } = await response.json();
+        setBookmarkedByUser(bookmarked);
+      } catch (error) {
+        console.error('Error fetching bookmark status:', error);
+      }
+    }
+
+    fetchBookmarkStatus();
+  }, [postId]);
+
+  async function bookmarkFunctionality(e) {
+    e.preventDefault();
+    if (!postId) {
+      throw new Error("Post ID is missing.");
+    }
+    try {
+      const response = await fetch(`http://localhost:5000/api/user/bookmark/${postId}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify(), // No need to send any body data
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update bookmark status');
+      }
+
+      const { bookmarked } = await response.json();
+      setBookmarkedByUser(bookmarked);
+      setTotalBookmarks(prevBookmarks => bookmarked ? prevBookmarks + 1 : prevBookmarks - 1);
+      console.log('Post bookmarked/unbookmarked successfully!');
+    } catch (error) {
+      console.error('There was a problem with the bookmark functionality:', error);
     }
   };
 
@@ -122,7 +177,8 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
           {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : 'none' })}{totalLikes}
         </button>}
         {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}{numberOfComments}</button>}
-        {!commentToggle && <button className='functionalities-bookmark'>{bookmarkSVG}</button>}
+        {!commentToggle && <button className='functionalities-bookmark' name={!bookmarkedByUser ? 'gray' : 'green'} onClick={bookmarkFunctionality}>
+        {cloneWithProps(bookmarkSVG, { fill: bookmarkedByUser ? 'currentColor' : 'none' })}{totalBookmarks}</button>}
       </div>
     </div>
   );

@@ -33,6 +33,7 @@ export default function Details() {
                         numberOfComments={postDetails.comments?.length}
                         numberOfLikes={postDetails.likes?.length}
                         authorProfilePicture={postDetails.user.profilePicture}
+                        numberOfBookmarks={postDetails.bookmarkedBy?.length}
                     />
                 )}
 

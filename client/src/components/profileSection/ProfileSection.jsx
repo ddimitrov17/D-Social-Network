@@ -53,7 +53,8 @@ export default function ProfileSection() {
                     commentToggle={false}
                     numberOfLikes={currentPost.likes.length}
                     numberOfComments={currentPost.comments.length}
-                    authorProfilePicture={currentPost.user.profilePicture} />)}
+                    authorProfilePicture={currentPost.user.profilePicture}
+                    numberOfBookmarks={currentPost.bookmarkedBy.length} />)}
             </div>
         </div>
     )
