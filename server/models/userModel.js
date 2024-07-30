@@ -20,11 +20,11 @@ const userSchema = new Schema(
         },
         profilePicture: {
             type: String,
-            default: "https://res.cloudinary.com/dv7qy8zgi/image/upload/v1722093871/wa7oxvqtkfbmk1uwco16.png" 
+            default: "https://res.cloudinary.com/dv7qy8zgi/image/upload/v1722093871/wa7oxvqtkfbmk1uwco16.png"
         },
         coverImage: {
             type: String,
-            default: "https://res.cloudinary.com/dv7qy8zgi/image/upload/v1722093871/p3uz1mdb81jqepivbyjg.png" 
+            default: "https://res.cloudinary.com/dv7qy8zgi/image/upload/v1722093871/p3uz1mdb81jqepivbyjg.png"
         },
         bio: {
             type: String,
@@ -34,8 +34,24 @@ const userSchema = new Schema(
             type: Array,
             ref: "Post",
             default: []
+        },
+        bookmarks: {
+            type: Array,
+            ref: "Post",
+            default: []
+        },
+        followers: {
+            type: Array,
+            ref: "User",
+            default: []
+        },
+        following: {
+            type: Array,
+            ref: "User",
+            default: []
         }
-    }, { timestamps: true }
+    },
+    { timestamps: true }
 );
 
 const User = model("User", userSchema);
