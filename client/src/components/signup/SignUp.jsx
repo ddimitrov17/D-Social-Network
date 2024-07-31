@@ -23,7 +23,6 @@ export default function SignUp() {
     password: ''
   });
 
-  // State to track if input has been touched
   const [touched, setTouched] = useState({
     email: false,
     username: false,
@@ -50,19 +49,18 @@ export default function SignUp() {
 
     try {
       signUpSchema.fields[name].validateSync(value);
-      setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: false }));
     } catch (error) {
-      setErrors((prevErrors) => ({ ...prevErrors, [name]: error.message }));
+      setErrors((prevErrors) => ({ ...prevErrors, [name]: true }));
     }
   };
 
   async function signUpSubmitHandler(e) {
     e.preventDefault();
     try {
-      for (currentInput in errors) {
-        if (currentInput) {
-          throw new Error;
-        }
+      const isValid = await signUpSchema.isValid(formData);
+      if (!isValid) {
+        throw new Error;
       }
       const response = await fetch('http://localhost:5000/api/auth/signup', {
         method: 'POST',
@@ -92,7 +90,6 @@ export default function SignUp() {
         <form className="signup-form" onSubmit={signUpSubmitHandler}>
           <h1 className="signup-title">Join today.</h1>
 
-          {/* Email Input */}
           <label className={`signup-input-container${touched.email && errors.email ? '-error' : ''}`}>
             <MdOutlineMail />
             <input
