@@ -74,7 +74,7 @@ export default function LoginPage() {
       console.log('Login successful!');
       navigate('/');
     } catch (error) {
-      setErrors((prevErrors) => ({ ...prevErrors, general: error.message }));
+      setErrors((prevErrors) => ({ ...prevErrors, general: 'Invalid Login Inputs.' }));
     }
   }
 
