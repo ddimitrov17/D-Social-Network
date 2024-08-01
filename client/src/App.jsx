@@ -6,22 +6,23 @@ import './App.css';
 import SignUp from './components/signup/SignUp';
 import LoginPage from './components/login/Login';
 import Catalog from './components/catalog/Catalog';
-import { useEffect, useState } from 'react';
-import UserContext from './components/contexts/UserContext';
-import CreatePost from './components/createPost/CreatePost';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Logout from './components/logout/Logout';
 import Details from './components/details/Details';
 import EditPost from './components/editPost/Edit';
 import ProfileSection from './components/profileSection/ProfileSection';
 import Explore from './components/explore/Explore';
 import Bookmarks from './components/bookmarks/Bookmarks';
+import { logoutUser, setUser } from './redux/actions/userActions';
 
 export default function App() {
   const location = useLocation();
   const hidePanes = location.pathname === '/register' || location.pathname === '/login';
-  const [currentUser, setCurrentUser] = useState('');
+  const dispatch = useDispatch();
   useEffect(() => {
     if (location.pathname === '/logout') {
+      dispatch(logoutUser());
       return;
     }
     async function getCurrentUser() {
@@ -33,10 +34,10 @@ export default function App() {
         const data = await response.json();
         data.status = response.status;
         // console.log(data.status);
-        if (data.status == 200) {
-          setCurrentUser(data);
+        if (response.ok) {
+          dispatch(setUser(data));
         } else {
-          setCurrentUser(false);
+          dispatch(logoutUser());
         }
         // console.log(currentUser);
       } catch (error) {
@@ -44,10 +45,9 @@ export default function App() {
       }
     };
     getCurrentUser();
-  }, [location.pathname]); //TODO: Can make it rerender just when a user logs in or logs out , every other time it would be in the context ; basically fetch it once then fetch only when there is log in or logout
+  }, [location.pathname,dispatch]); //TODO: Can make it rerender just when a user logs in or logs out , every other time it would be in the context ; basically fetch it once then fetch only when there is log in or logout
   return (
     <div className="app">
-      <UserContext.Provider value={{ user: currentUser }}>
         {!hidePanes && <LeftPane />}
         {location.pathname=='/create' && <Home />}
         <Routes>
@@ -64,7 +64,6 @@ export default function App() {
           {/* <Route path='/create' element={<CreatePost/>}/> */}
         </Routes>
         {!hidePanes && <RightPane />}
-      </UserContext.Provider>
     </div >
   );
 }

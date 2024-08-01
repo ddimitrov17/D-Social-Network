@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import PostSkeleton from "../Post/postSkeleton";
-// import LeftPane from "../leftPane/LeftPane";
-// import RightPane from "../rightPane/RightPane";
 import './Catalog.css'
+import Spinner from "../../loadingSpinner/Spinner";
 
 export default function Catalog() {
     const [posts, setPosts] = useState([]);
+    const [loading, setLoading] = useState(true); 
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -13,37 +13,40 @@ export default function Catalog() {
                 const response = await fetch('http://localhost:5000/api/posts/all');
                 const postsData = await response.json();
                 setPosts(postsData);
-                // console.log('fetch posts successful');
             } catch (error) {
                 console.error('Error fetching posts:', error);
+            } finally {
+                setLoading(false); 
             }
         };
 
         fetchPosts();
     }, []);
+
     return (
         <>
-
-
-            {/* <LeftPane /> */}
             <div className="catalog">
-                {posts.map(currentPost => <PostSkeleton key={currentPost._id}
-                    text={currentPost.text}
-                    image={currentPost?.img}
-                    username={currentPost.user.username}
-                    fullName={currentPost.user.fullName}
-                    postId={currentPost._id}
-                    detailsPageToggle={false}
-                    commentToggle={false}
-                    numberOfLikes={currentPost.likes.length}
-                    numberOfComments={currentPost.comments.length}
-                    authorProfilePicture={currentPost.user.profilePicture}
-                    numberOfBookmarks={currentPost.bookmarkedBy.length} />)}
+                {loading ? ( 
+                    <Spinner /> 
+                ) : (
+                    posts.map(currentPost => (
+                        <PostSkeleton 
+                            key={currentPost._id}
+                            text={currentPost.text}
+                            image={currentPost?.img}
+                            username={currentPost.user.username}
+                            fullName={currentPost.user.fullName}
+                            postId={currentPost._id}
+                            detailsPageToggle={false}
+                            commentToggle={false}
+                            numberOfLikes={currentPost.likes.length}
+                            numberOfComments={currentPost.comments.length}
+                            authorProfilePicture={currentPost.user.profilePicture}
+                            numberOfBookmarks={currentPost.bookmarkedBy.length}
+                        />
+                    ))
+                )}
             </div>
-            {/* <div className="catalog-right-pane">
-                WHO TO FOLLOW SECTION
-            </div> */}
-            {/* <RightPane /> */}
         </>
-    )
+    );
 }

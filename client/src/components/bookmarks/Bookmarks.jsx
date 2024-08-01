@@ -1,14 +1,16 @@
-import { useContext } from "react";
-import UserContext from "../contexts/UserContext";
+import Spinner from "../../loadingSpinner/Spinner";
 import PostSkeleton from "../Post/postSkeleton";
+import { useSelector } from "react-redux";
 
 export default function Bookmarks() {
-    const { user } = useContext(UserContext);
-    console.log(user.bookmarks);
+    const user = useSelector(state => state.user.currentUser);
+    if (!user) {
+        return <Spinner />; 
+    }
     return (
         <div className="bookmarks-section">
             {user.bookmarks && user.bookmarks.map(currentBookmark => (
-                <PostSkeleton 
+                <PostSkeleton
                     key={currentBookmark._id}
                     text={currentBookmark.text}
                     image={currentBookmark?.img}

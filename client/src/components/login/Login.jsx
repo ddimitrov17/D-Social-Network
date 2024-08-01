@@ -5,9 +5,12 @@ import { MdOutlineMail, MdPassword } from "react-icons/md";
 import './login.css';
 import { loginSchema } from "../../validations/loginValidation";
 import ErrorComponent from "../error/ErrorComponent";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/actions/userActions";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -67,11 +70,11 @@ export default function LoginPage() {
       if (!response.ok) {
         throw new Error('Invalid login response');
       }
-
+      dispatch(setUser(formData));
       console.log('Login successful!');
       navigate('/');
     } catch (error) {
-      setErrors((prevErrors) => ({ ...prevErrors, general: 'Invalid login inputs.' }));
+      setErrors((prevErrors) => ({ ...prevErrors, general: error.message }));
     }
   }
 

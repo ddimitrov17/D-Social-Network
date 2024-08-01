@@ -6,9 +6,12 @@ import { FaUser } from 'react-icons/fa';
 import { signUpSchema } from '../../validations/signUpValidation';
 import ErrorComponent from '../error/ErrorComponent';
 import './signup.css';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/actions/userActions';
 
 export default function SignUp() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     email: '',
     username: '',
@@ -75,6 +78,7 @@ export default function SignUp() {
         throw new Error();
       }
       console.log('Sign up successful!');
+      dispatch(setUser(formData));
       navigate('/');
     } catch (error) {
       setErrors((prevErrors) => ({ ...prevErrors, general: 'Invalid sign up inputs.' }));
