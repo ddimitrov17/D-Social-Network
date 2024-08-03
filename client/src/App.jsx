@@ -62,7 +62,7 @@ export default function App() {
         <Route path="/register" element={user ? <Navigate to="/catalog" /> : <SignUp />} /> // For Non-Logged Users
         <Route path="/login" element={user ? <Navigate to="/catalog" /> : <LoginPage />} /> // For Non-Logged Users
         <Route path="/logout" element={<ProtectedRoute element={<Logout />} user={user} />} /> // For Logged Users
-        <Route path='/details/:id' element={<ProtectedRoute element={<Details />} user={user} />} /> // For Logged Users
+        <Route path='/details/:id' element={<Details />} /> 
         <Route path="/edit/:id" element={<ProtectedRoute element={<EditPost />} user={user} />} /> // For Logged Users
       </Routes>
       {!hidePanes && <RightPane />}
