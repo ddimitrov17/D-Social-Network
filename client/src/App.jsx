@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import LeftPane from './components/leftPane/LeftPane';
 import RightPane from './components/rightPane/RightPane';
 import Home from './components/home/Home';
@@ -15,11 +15,15 @@ import ProfileSection from './components/profileSection/ProfileSection';
 import Explore from './components/explore/Explore';
 import Bookmarks from './components/bookmarks/Bookmarks';
 import { logoutUser, setUser } from './redux/actions/userActions';
+import { ProtectedRoute } from './components/protectedRoute/ProtectedRoute';
 
 export default function App() {
   const location = useLocation();
+  const user = useSelector(state => state.user.currentUser);
+  console.log(user)
   const hidePanes = location.pathname === '/register' || location.pathname === '/login';
   const dispatch = useDispatch();
+
   useEffect(() => {
     if (location.pathname === '/logout') {
       dispatch(logoutUser());
@@ -33,37 +37,35 @@ export default function App() {
         });
         const data = await response.json();
         data.status = response.status;
-        // console.log(data.status);
         if (response.ok) {
           dispatch(setUser(data));
         } else {
           dispatch(logoutUser());
         }
-        // console.log(currentUser);
       } catch (error) {
         console.log('Error in getting current user');
       }
     };
     getCurrentUser();
-  }, [location.pathname,dispatch]); //TODO: Can make it rerender just when a user logs in or logs out , every other time it would be in the context ; basically fetch it once then fetch only when there is log in or logout
+  }, [location.pathname, dispatch]);
+
   return (
     <div className="app">
-        {!hidePanes && <LeftPane />}
-        {(location.pathname=='/create' || location.pathname=='/create-event') && <Home />}
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/catalog' element={<Catalog />} />
-          <Route path="/explore" element={<Explore/>} />
-          <Route path="/bookmarks" element={<Bookmarks/>} /> //Login Protect
-          <Route path="/profile/:username" element={<ProfileSection/>} /> //Login Protect
-          <Route path="/register" element={<SignUp />} /> //Already Logged In Protect
-          <Route path="/login" element={<LoginPage />} /> //Already Logged In Protect
-          <Route path="/logout" element={<Logout />} /> //Login Protect
-          <Route path='/details/:id' element={<Details />}/>
-          <Route path="/edit/:id" element={<EditPost />} /> //Login Protect //Author Protect
-          {/* <Route path='/create' element={<CreatePost/>}/> */}
-        </Routes>
-        {!hidePanes && <RightPane />}
-    </div >
+      {!hidePanes && <LeftPane />}
+      {(location.pathname === '/create' || location.pathname === '/create-event') && <Home />}
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/catalog' element={<Catalog />} />
+        <Route path="/explore" element={<Explore />} />
+        <Route path="/bookmarks" element={<ProtectedRoute element={<Bookmarks />} user={user} />} />
+        <Route path="/profile/:username" element={user ? <ProfileSection /> : <Navigate to="/login" />} /> // For Logged Users
+        <Route path="/register" element={user ? <Navigate to="/catalog" /> : <SignUp />} /> // For Non-Logged Users
+        <Route path="/login" element={user ? <Navigate to="/catalog" /> : <LoginPage />} /> // For Non-Logged Users
+        <Route path="/logout" element={<ProtectedRoute element={<Logout />} user={user} />} /> // For Logged Users
+        <Route path='/details/:id' element={<ProtectedRoute element={<Details />} user={user} />} /> // For Logged Users
+        <Route path="/edit/:id" element={<ProtectedRoute element={<EditPost />} user={user} />} /> // For Logged Users
+      </Routes>
+      {!hidePanes && <RightPane />}
+    </div>
   );
 }
