@@ -1,0 +1,124 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(170, 169, 169, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.create-event {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 5rem;
+    background-color: #001d1c;
+    border-radius: 5px;
+    width: 500px;
+    height: 400px;
+}
+
+.create-event .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.create-event .textarea {
+    width: 100%;
+    height: 12vh;
+    padding: 5px;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+    background: #001d1c;
+    cursor: inherit;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.create-event .input {
+    width: 100%;
+    height: 2vh;
+    padding: 5px;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+    background: #001d1c;
+    cursor: inherit;
+    color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.image {
+    padding: 5px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    background: #001d1c;
+    width: 50%;
+    color: white;
+}
+
+.create-event .img-container {
+    position: relative;
+    width: 18rem;
+    margin: 0 auto;
+}
+
+.create-event .close-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    background-color: #001d1c;
+    border-radius: 50%;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+}
+
+.create-event .actions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    border-top: 1px solid #374151;
+}
+
+.create-event .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+    fill: #3b82f6;
+}
+
+.create-event .button {
+    background-color: #cd5c00;
+    border-radius: 9999px;
+    color: white;
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+.create-event .button:hover {
+    background-color: #bb6016;
+}
+
+.create-event .button:hover {
+    background-color: #bb6016;
+}
+
+.close-button {
+    background-color: transparent;
+    color: white;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}

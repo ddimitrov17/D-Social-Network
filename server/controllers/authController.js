@@ -36,6 +36,7 @@ async function signup(req, res) {
 async function login(req,res) {
     try {
         const { username, password } = req.body;
+        console.log(req.body)
 		const user = await User.findOne({ username });
 		const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
         if (!user || !isPasswordCorrect) {

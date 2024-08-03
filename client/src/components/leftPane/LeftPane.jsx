@@ -4,10 +4,12 @@ import './leftPane.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import CreatePost from '../createPost/CreatePost';
+import CreateEvent from '../createEvent/CreateEvent';
 
 export default function LeftPane() {
   const user = useSelector((state) => state.user.currentUser);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false); // create Post
+  const [isModalOpenEvent,setIsModalOpenEvent]=useState(false); // create Event
   const navigate = useNavigate();
 
   function createPostHandler() {
@@ -17,6 +19,16 @@ export default function LeftPane() {
 
   function closeModalHandler() {
     setIsModalOpen(false);
+    navigate(-1);
+  }
+
+  function createEventHandler() {
+    setIsModalOpenEvent(true);
+    navigate('/create-event');
+  }
+
+  function closeModalEventHandler() {
+    setIsModalOpenEvent(false);
     navigate(-1);
   }
 
@@ -67,10 +79,11 @@ export default function LeftPane() {
           </button>
         </nav>
 
-        <button className="post" onClick={createPostHandler}>
-          Post
-        </button>
+        <button className="post" onClick={createPostHandler}>Post</button>
+        <button className="post" onClick={createEventHandler}>Create Event</button>
+
         {isModalOpen && <CreatePost onClose={closeModalHandler} />}
+        {isModalOpenEvent && <CreateEvent onClose={closeModalEventHandler} />}
         <footer>
           {user ? (
             <button className="account" onClick={accountButtonHandler}>

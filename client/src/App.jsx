@@ -49,7 +49,7 @@ export default function App() {
   return (
     <div className="app">
         {!hidePanes && <LeftPane />}
-        {location.pathname=='/create' && <Home />}
+        {(location.pathname=='/create' || location.pathname=='/create-event') && <Home />}
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/catalog' element={<Catalog />} />

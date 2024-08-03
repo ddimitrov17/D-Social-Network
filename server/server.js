@@ -8,6 +8,7 @@ const cookieParser = require("cookie-parser");
 const { v2 } = require('cloudinary');
 const { postRoutes } = require("./routes/postRouter.js");
 const { userRoutes } = require("./routes/userRouter.js");
+const { eventRoutes } = require("./routes/eventRouter.js");
 
 dotenv.config();
 
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use("/api/posts", postRoutes);
 app.use("/api/user",userRoutes);
+app.use("/api/events",eventRoutes)
 const PORT = process.env.PORT || 5000;
 
 
