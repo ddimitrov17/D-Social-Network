@@ -57,6 +57,7 @@
     height: 100%;
     width: 95%;
     margin-left: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .post-image {
@@ -64,6 +65,7 @@
     width: 530px;
     /* Edit from 89% */
     border-radius: 8px;
+    margin-bottom: 1rem;
 }
 
 .post-functionality {

@@ -3,9 +3,11 @@ import './postSkeleton.css';
 import { bookmarkSVG, commentSVG, likeSVG, deleteSVG, editSVG, detailsSVG } from './postSVG';
 import { useNavigate } from 'react-router-dom';
 import { cloneWithProps } from './svgClone';
+import { useSelector } from 'react-redux';
 
 export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle, numberOfComments, numberOfLikes, authorProfilePicture, numberOfBookmarks }) {
   // const [likes, setLikes] = useState(initialLikes);
+  const user = useSelector((state) => state.user.currentUser);
   const [likedByUser, setLikedByUser] = useState(false);
   const [totalLikes, setTotalLikes] = useState(numberOfLikes)
   const [bookmarkedByUser, setBookmarkedByUser] = useState(false);
@@ -172,6 +174,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       </div>
       <div className='content-skeleton'>{text}</div>
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
+      {user && (
       <div className='post-functionality'>
         {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>
           {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : 'none' })}{totalLikes}
@@ -179,7 +182,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
         {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}{numberOfComments}</button>}
         {!commentToggle && <button className='functionalities-bookmark' name={!bookmarkedByUser ? 'gray' : 'green'} onClick={bookmarkFunctionality}>
         {cloneWithProps(bookmarkSVG, { fill: bookmarkedByUser ? 'currentColor' : 'none' })}{totalBookmarks}</button>}
-      </div>
+      </div>)}
     </div>
   );
 }

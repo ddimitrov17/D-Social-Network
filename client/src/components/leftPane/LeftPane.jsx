@@ -74,29 +74,23 @@ export default function LeftPane() {
               <span>{logout} Sign Out</span>
             </NavLink>
           )}
-          <button className="more">
+          {/* <button className="more">
             <span>{more} More</span>
-          </button>
+          </button> */}
         </nav>
 
-        <button className="post" onClick={createPostHandler}>Post</button>
-        <button className="post" onClick={createEventHandler}>Create Event</button>
+        {user && <button className="post" onClick={createPostHandler}>Post</button>}
+        {user && <button className="post" onClick={createEventHandler}>Create Event</button>}
 
         {isModalOpen && <CreatePost onClose={closeModalHandler} />}
         {isModalOpenEvent && <CreateEvent onClose={closeModalEventHandler} />}
         <footer>
-          {user ? (
+          {user && (
             <button className="account" onClick={accountButtonHandler}>
               <img className="photo" src={user.profilePicture && user.profilePicture} alt="Profile Picture" />
               <div>
                 <div className="name">{user.username && user.fullName}</div>
                 <div className="username">{user.username ? `@${user.username}` : ''}</div>
-              </div>
-            </button>
-          ) : (
-            <button className="account">
-              <div>
-                <div className="name">Guest</div>
               </div>
             </button>
           )}

@@ -51,3 +51,8 @@
     background-color: #bb6016;
 }
 
+.already-responded {
+    text-align: center;
+    margin: 12px;
+    font-weight: bold;
+}

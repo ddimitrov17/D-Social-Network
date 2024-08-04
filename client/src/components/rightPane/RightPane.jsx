@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import EventSkeleton from '../Event/EventSkeleton';
-import './rightPane.css'
+import './rightPane.css';
 import Spinner from '../../loadingSpinner/Spinner';
+import { useSelector } from 'react-redux';
 
 export default function RightPane() {
+  const user = useSelector((state) => state.user.currentUser);
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [eventsLoading, setEventsLoading] = useState(true);
+  const [userStatus, setUserStatus] = useState(false); 
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -16,31 +19,39 @@ export default function RightPane() {
       } catch (error) {
         console.error('Error fetching events:', error);
       } finally {
-        setLoading(false);
+        setEventsLoading(false);
       }
     };
 
     fetchEvents();
+    setUserStatus(true); 
   }, []);
+
+  if (!userStatus) {
+    return <Spinner />;
+  }
 
   return (
     <div className="right-pane">
       <div className='popular-events-title'>Popular Events</div>
       <div className="catalog">
-        {loading ? (
+        {eventsLoading ? (
           <Spinner />
         ) : (
           events.map(currentEvent => (
             <EventSkeleton
+              eventId={currentEvent._id.toString()}
               key={currentEvent._id}
               description={currentEvent.description}
               going={currentEvent.going.length}
               interested={currentEvent.interested.length}
               name={currentEvent.name}
-              img={currentEvent?.img}
+              img={currentEvent.img}
               creator={currentEvent.creator}
               location={currentEvent.location}
               date={currentEvent.date}
+              // alreadyGoing={currentEvent.going.includes(user._id)}
+              // alreadyInterested={currentEvent.interested.includes(user._id)}
             />
           ))
         )}
@@ -48,5 +59,3 @@ export default function RightPane() {
     </div>
   );
 }
-
-

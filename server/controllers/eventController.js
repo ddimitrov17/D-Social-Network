@@ -49,7 +49,70 @@ async function getAllEvents(req, res) {
     }
 }
 
+async function goingToAnEvent(req, res) {
+    try {
+        const userId = req.user._id;
+        const { id: eventId } = req.params;
+
+        const event = await Event.findById(eventId);
+
+        if (!event) {
+            return res.status(404).json({ error: "Event not found" });
+        }
+        event.going.push(userId);
+        await event.save();
+
+        res.status(200).json(event)
+    } catch (error) {
+        console.log("Error in eventPost controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+async function interestedInAnEvent(req, res) {
+    try {
+        const userId = req.user._id;
+        const { id: eventId } = req.params;
+
+        const event = await Event.findById(eventId);
+
+        if (!event) {
+            return res.status(404).json({ error: "Event not found" });
+        }
+        event.interested.push(userId);
+        await event.save();
+
+        res.status(200).json(event)
+    } catch (error) {
+        console.log("Error in eventPost controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+async function getGoingAndInterestedStatus(req, res) {
+    try {
+        const userId = req.user._id;
+        const { id: eventId } = req.params;
+
+        const user = await User.findById(userId).lean();
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+        const event = await Event.findById(eventId);
+
+        const going = event.going.includes(userId);
+        const interested = event.interested.includes(userId);
+        res.status(200).json({ going,interested });
+    } catch (error) {
+        console.error("Error in getGoingAndInterestedStatus controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
+
 module.exports = {
     eventCreate,
-    getAllEvents
+    getAllEvents,
+    goingToAnEvent,
+    interestedInAnEvent,
+    getGoingAndInterestedStatus
 }
