@@ -18,6 +18,10 @@ export default function PostReply({ postId }) {
 
     async function commentSubmitHandler(e) {
         e.preventDefault(); 
+        if (!user) {
+            navigate('/login');
+            return;
+        }
         try {
             const response = await fetch(`http://localhost:5000/api/posts/comment/${postId}`, {
                 method: 'POST',
@@ -57,7 +61,7 @@ export default function PostReply({ postId }) {
                     />
                     <button 
                         className='button' 
-                        disabled={!user} 
+                        type='submit'
                     >
                         Reply
                     </button>

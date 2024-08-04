@@ -111,7 +111,7 @@ export default function EventSkeleton({
                 <div className="event-name">{nameSVG}{name}</div>
                 <div className="event-date">{dateSVG}{date.slice(0, 10)}</div>
                 <div className="event-location">{locationSVG}{location}</div>
-                <div className="going-count">{goingSVG}{going} people are going</div>
+                <div className="going-count">{goingSVG}{going} are going</div>
                 <div className="interested-count">{interestedSVG}{interested} are interested in this event</div>
             </div>
             {user && (

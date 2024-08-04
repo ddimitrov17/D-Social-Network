@@ -43,6 +43,7 @@ export default function Catalog() {
                             numberOfComments={currentPost.comments.length}
                             authorProfilePicture={currentPost.user.profilePicture}
                             numberOfBookmarks={currentPost.bookmarkedBy.length}
+                            // authorId={currentPost.user._id}
                         />
                     ))
                 )}

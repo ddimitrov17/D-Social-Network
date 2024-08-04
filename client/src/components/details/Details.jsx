@@ -46,6 +46,7 @@ export default function Details() {
                             numberOfLikes={postDetails.likes?.length}
                             authorProfilePicture={postDetails.user.profilePicture}
                             numberOfBookmarks={postDetails.bookmarkedBy?.length}
+                            authorId={postDetails.user._id}
                         />
                     )
                 )}
@@ -60,6 +61,7 @@ export default function Details() {
                         detailsPageToggle={true}
                         image={currentComment.img}
                         commentToggle={true}
+                        authorProfilePicture={currentComment.user.profilePicture}
                     />
                 ))}
             </div>

@@ -5,9 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { cloneWithProps } from './svgClone';
 import { useSelector } from 'react-redux';
 
-export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle, numberOfComments, numberOfLikes, authorProfilePicture, numberOfBookmarks }) {
+export default function PostSkeleton({ text, fullName, username, image, postId, detailsPageToggle, commentToggle, authorId, numberOfComments, numberOfLikes, authorProfilePicture, numberOfBookmarks }) {
   // const [likes, setLikes] = useState(initialLikes);
   const user = useSelector((state) => state.user.currentUser);
+  const isAuthor = user?._id == authorId;
+  console.log(isAuthor)
   const [likedByUser, setLikedByUser] = useState(false);
   const [totalLikes, setTotalLikes] = useState(numberOfLikes)
   const [bookmarkedByUser, setBookmarkedByUser] = useState(false);
@@ -151,10 +153,10 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   return (
     <div className='post-skeleton'>
       <div className="button-container">
-        {!commentToggle && (detailsPageToggle && (<button className='options-button' onClick={editHandler}>
+        {(isAuthor && !commentToggle) && (detailsPageToggle && (<button className='options-button' onClick={editHandler}>
           {editSVG}
         </button>))}
-        {!commentToggle && (detailsPageToggle && (<button className='options-button' onClick={deleteFunctionality}>
+        {(isAuthor && !commentToggle) && (detailsPageToggle && (<button className='options-button' onClick={deleteFunctionality}>
           {deleteSVG}
         </button>))}
         {!commentToggle && (!detailsPageToggle && (
@@ -175,14 +177,14 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       <div className='content-skeleton'>{text}</div>
       {image && <div className='image-container'><img src={image} alt="Post" className='post-image' /></div>}
       {user && (
-      <div className='post-functionality'>
-        {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>
-          {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : 'none' })}{totalLikes}
-        </button>}
-        {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}{numberOfComments}</button>}
-        {!commentToggle && <button className='functionalities-bookmark' name={!bookmarkedByUser ? 'gray' : 'green'} onClick={bookmarkFunctionality}>
-        {cloneWithProps(bookmarkSVG, { fill: bookmarkedByUser ? 'currentColor' : 'none' })}{totalBookmarks}</button>}
-      </div>)}
+        <div className='post-functionality'>
+          {!commentToggle && <button className='functionalities-like' name={!likedByUser ? 'gray' : 'green'} onClick={likeFunctionality}>
+            {cloneWithProps(likeSVG, { fill: likedByUser ? 'currentColor' : 'none' })}{totalLikes}
+          </button>}
+          {!commentToggle && <button className='functionalities-comment' onClick={() => navigate(`/details/${postId}`)}>{commentSVG}{numberOfComments}</button>}
+          {!commentToggle && <button className='functionalities-bookmark' name={!bookmarkedByUser ? 'gray' : 'green'} onClick={bookmarkFunctionality}>
+            {cloneWithProps(bookmarkSVG, { fill: bookmarkedByUser ? 'currentColor' : 'none' })}{totalBookmarks}</button>}
+        </div>)}
     </div>
   );
 }
