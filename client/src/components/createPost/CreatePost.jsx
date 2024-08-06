@@ -30,13 +30,12 @@ export default function CreatePost({ onClose }) {
 
 			if (!response.ok) {
 				throw new Error();
-				//TODO Error handling
 			}
-			console.log('Post created successfully!'); //TODO: Remove this
+			// console.log('Post created successfully!'); 
 			onClose();
 			navigate('/catalog');
 		} catch (error) {
-			console.error('There was a problem with the signup:', error);
+			console.error('There was a problem with the createPost:', error);
 		}
 	};
 	return (

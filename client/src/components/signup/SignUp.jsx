@@ -77,7 +77,7 @@ export default function SignUp() {
       if (!response.ok) {
         throw new Error();
       }
-      console.log('Sign up successful!');
+      // console.log('Sign up successful!');
       dispatch(setUser(formData));
       navigate('/');
     } catch (error) {

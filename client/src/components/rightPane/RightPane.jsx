@@ -50,8 +50,6 @@ export default function RightPane() {
               creator={currentEvent.creator}
               location={currentEvent.location}
               date={currentEvent.date}
-              // alreadyGoing={currentEvent.going.includes(user._id)}
-              // alreadyInterested={currentEvent.interested.includes(user._id)}
             />
           ))
         )}

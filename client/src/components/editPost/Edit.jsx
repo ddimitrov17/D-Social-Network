@@ -43,9 +43,8 @@ export default function EditPost() {
 
             if (!response.ok) {
                 throw new Error();
-                //TODO Error handling
             }
-            console.log('Post created successfully!'); //TODO: Remove this
+            // console.log('Post edited successfully!'); 
             onClose();
             navigate(`/details/${postId}`);
         } catch (error) {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './ErrorComponent.css';
 
-const ErrorComponent = ({ message, onClose }) => {
+export default function ErrorComponent({ message, onClose }) {
   useEffect(() => {
     const timer = setTimeout(onClose, 1500); 
     return () => clearTimeout(timer);
@@ -14,4 +14,3 @@ const ErrorComponent = ({ message, onClose }) => {
   );
 };
 
-export default ErrorComponent;

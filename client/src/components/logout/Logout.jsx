@@ -13,7 +13,7 @@ export default function Logout() {
           method: 'GET',
           credentials: 'include'
         });
-        console.log('logout executed') // cookie cleared
+        console.log('logout executed') 
         // console.log(user); // Should change context here
         // console.log(location.pathname);
         navigate('/');

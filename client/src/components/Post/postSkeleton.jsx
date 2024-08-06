@@ -53,7 +53,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
           'Content-Type': 'application/json'
         },
         credentials: 'include',
-        body: JSON.stringify(), // No need to send any body data
+        body: JSON.stringify()
       });
 
       if (!response.ok) {
@@ -106,7 +106,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
           'Content-Type': 'application/json'
         },
         credentials: 'include',
-        body: JSON.stringify(), // No need to send any body data
+        body: JSON.stringify()
       });
 
       if (!response.ok) {
@@ -116,7 +116,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       const { bookmarked } = await response.json();
       setBookmarkedByUser(bookmarked);
       setTotalBookmarks(prevBookmarks => bookmarked ? prevBookmarks + 1 : prevBookmarks - 1);
-      console.log('Post bookmarked/unbookmarked successfully!');
+      // console.log('Post bookmarked/unbookmarked successfully!');
     } catch (error) {
       console.error('There was a problem with the bookmark functionality:', error);
     }

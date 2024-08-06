@@ -36,7 +36,7 @@ export default function PostReply({ postId }) {
                 throw new Error();
             }
             navigate(0);
-            console.log('Comment posted successfully!');
+            // console.log('Comment posted successfully!');
         } catch (error) {
             console.error('There was a problem with the comment posting:', error);
         }
