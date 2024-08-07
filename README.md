@@ -11,3 +11,6 @@ of seeing the catalog without of course having the ability to interact with it i
 - **Edit and Delete Posts**: Users can edit and delete their own posts.
 - **Post Details**: View detailed information about each post.
 - **Authentication**: Secure user authentication with login and registration.
+- **Error Handling and form validation**: Forms are controlled and users are unable to submit if they are not filled correctly, implementefd error handling 
+- **Authorization & Route Protecting**: Inability for ineligible users to go to certain routes 
+- **Event Creating and Responding**: Users are able to create events and respond to them by 'Going' or 'Interested'
