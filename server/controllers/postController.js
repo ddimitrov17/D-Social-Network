@@ -119,7 +119,7 @@ async function deletePost(req, res) {
             return res.status(404).json({ error: "Post not found" });
         }
 
-        if (post.user.toString() !== req.user._id.toString()) { //TODO: remove after implementing protectRoute for Author
+        if (post.user.toString() !== req.user._id.toString()) { 
             return res.status(401).json({ error: "You are not authorized to delete this post" });
         }
 
@@ -145,7 +145,7 @@ async function editPost(req, res) {
             return res.status(404).json({ error: "Post not found" });
         }
 
-        if (post.user.toString() !== req.user._id.toString()) { //TODO: remove after implementing protectRoute for Author
+        if (post.user.toString() !== req.user._id.toString()) { 
             return res.status(401).json({ error: "You are not authorized to edit this post" });
         }
 

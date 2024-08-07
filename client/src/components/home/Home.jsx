@@ -13,7 +13,6 @@ export default function Home() {
 				const response = await fetch('http://localhost:5000/api/posts/home/top');
 				const postsData = await response.json();
 				setPosts(postsData);
-				// console.log('fetch posts successful');
 			} catch (error) {
 				console.error('Error fetching posts:', error);
 			} finally {

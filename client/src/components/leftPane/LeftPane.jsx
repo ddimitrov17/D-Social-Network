@@ -74,9 +74,6 @@ export default function LeftPane() {
               <span>{logout} Sign Out</span>
             </NavLink>
           )}
-          {/* <button className="more">
-            <span>{more} More</span>
-          </button> */}
         </nav>
 
         {user && <button className="post" onClick={createPostHandler}>Post</button>}

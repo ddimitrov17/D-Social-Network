@@ -71,8 +71,6 @@
 .post-functionality {
     display: flex;
     justify-content: space-around;
-    /* border-top: 1px solid gray; */
-    /*TODO: Remove*/
 }
 
 .functionalities-like {

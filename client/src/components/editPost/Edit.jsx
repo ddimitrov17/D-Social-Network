@@ -38,13 +38,12 @@ export default function EditPost() {
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include',
-                body: JSON.stringify(formData), //TODO: Refactor this function
+                body: JSON.stringify(formData)
             });
 
             if (!response.ok) {
                 throw new Error();
             }
-            // console.log('Post edited successfully!'); 
             onClose();
             navigate(`/details/${postId}`);
         } catch (error) {

@@ -26,15 +26,13 @@ export default function CreateEvent({ onClose }) {
                     'Content-Type': 'application/json'
                 },
                 credentials: 'include',
-                body: JSON.stringify(event), //TODO: Refactor this function
+                body: JSON.stringify(event)
             });
             const data = await response.json();
             console.log(data);
             if (!response.ok) {
                 throw new Error();
-                //TODO Error handling
             }
-            console.log('Event created successfully!'); //TODO: Remove this
             onClose();
             navigate('/catalog');
         } catch (error) {
