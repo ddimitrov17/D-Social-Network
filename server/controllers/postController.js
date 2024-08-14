@@ -119,7 +119,7 @@ async function deletePost(req, res) {
             return res.status(404).json({ error: "Post not found" });
         }
 
-        if (post.user.toString() !== req.user._id.toString()) { 
+        if (post.user.toString() !== req.user._id.toString()) {
             return res.status(401).json({ error: "You are not authorized to delete this post" });
         }
 
@@ -145,7 +145,7 @@ async function editPost(req, res) {
             return res.status(404).json({ error: "Post not found" });
         }
 
-        if (post.user.toString() !== req.user._id.toString()) { 
+        if (post.user.toString() !== req.user._id.toString()) {
             return res.status(401).json({ error: "You are not authorized to edit this post" });
         }
 
@@ -207,7 +207,7 @@ async function getProfile(req, res) {
                 select: "-password",
             });
 
-        res.status(200).json(posts);
+        res.status(200).json({ posts, userData: user });
     } catch (error) {
         console.log("Error in getProfile controller: ", error);
         res.status(500).json({ error: "Internal server error" });
@@ -234,7 +234,10 @@ async function postExplore(req, res) {
                 select: "-password",
             });
 
-        res.json(posts);
+        const users = await User.find({
+            username: { $regex: query, $options: 'i' }
+        });
+        res.json({ posts, users });
     } catch (error) {
         console.log('Search Error:', error);
         res.status(500).json({ error: 'Internal server error' });

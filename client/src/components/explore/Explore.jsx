@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './Explore.css';
 import PostSkeleton from '../Post/postSkeleton';
+import UserMatch from './UserMatch';
 
 export default function Explore() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -31,6 +32,7 @@ export default function Explore() {
 
             const data = await response.json();
             setSearchResults(data);
+            console.log(data)
         } catch (error) {
             console.error('Error fetching search results:', error);
         }
@@ -48,8 +50,17 @@ export default function Explore() {
                     </form>
                 </div>
             </div>
+            <div className='people-matches'>
+                {searchResults.users && searchResults.users.map(currentUser => (
+                    <UserMatch
+                        key={currentUser._id}
+                        profilePicture={currentUser.profilePicture}
+                        fullName={currentUser.fullName}
+                        username={currentUser.username} />
+                ))}
+            </div>
             <div className='post-matches'>
-                {searchResults && searchResults.map(currentPost => (
+                {searchResults.posts && searchResults.posts.map(currentPost => (
                     <PostSkeleton
                         key={currentPost._id}
                         text={currentPost.text}

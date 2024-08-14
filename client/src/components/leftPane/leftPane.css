@@ -104,8 +104,10 @@
 
 .left-pane footer button.account .name {
   font-weight: 700;
+  text-align: left;
 }
 
 .left-pane footer button.account .username {
   color: #8899a6;
+  text-align: left;
 }

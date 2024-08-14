@@ -10,12 +10,14 @@ export default function ProfileSection() {
     const { username } = useParams();
     const [userPosts, setUserPosts] = useState([]);
     const [loading, setLoading] = useState(true); 
+    const [userData,setUserData]=useState();
     useEffect(() => {
         const fetchUserPosts = async () => {
             try {
                 const response = await fetch(`http://localhost:5000/api/posts/profile/${username}`);
                 const postsData = await response.json();
-                setUserPosts(postsData);
+                setUserPosts(postsData.posts);
+                setUserData(postsData.userData)
             } catch (error) {
                 console.error('Error fetching posts:', error);
             } finally {
@@ -34,14 +36,14 @@ export default function ProfileSection() {
         <div className='profile-page'>
             <div className='profile-section'>
                 <div className='cover-image'>
-                    <img src={user.coverImage} alt="Cover Image" />
+                    <img src={userData.coverImage} alt="Cover Image" />
                 </div>
                 <div className='profile-picture'>
-                    <img src={user.profilePicture} alt="Profile Picture" />
+                    <img src={userData.profilePicture} alt="Profile Picture" />
                 </div>
                 <div className='user-credentials'>
-                    <div className='user-fullname'>{user.fullName}</div>
-                    <div className='user-username'>{user.username ? `@${user.username}` : ''}</div>
+                    <div className='user-fullname'>{userData.fullName}</div>
+                    <div className='user-username'>{userData.username ? `@${userData.username}` : ''}</div>
                 </div>
                 <div className='buttons'>
                     <button className='posts-button'>Posts</button>
@@ -49,7 +51,7 @@ export default function ProfileSection() {
                 </div>
             </div>
             <div className='user-posts'>
-                {userPosts.map(currentPost => (
+                {userPosts && userPosts.map(currentPost => (
                     <PostSkeleton 
                         key={currentPost._id}
                         text={currentPost.text}
