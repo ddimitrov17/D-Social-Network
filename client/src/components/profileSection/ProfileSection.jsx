@@ -9,8 +9,9 @@ export default function ProfileSection() {
     const user = useSelector(state => state.user.currentUser);
     const { username } = useParams();
     const [userPosts, setUserPosts] = useState([]);
-    const [loading, setLoading] = useState(true); 
-    const [userData,setUserData]=useState();
+    const [loading, setLoading] = useState(true);
+    const [userData, setUserData] = useState();
+
     useEffect(() => {
         const fetchUserPosts = async () => {
             try {
@@ -21,15 +22,15 @@ export default function ProfileSection() {
             } catch (error) {
                 console.error('Error fetching posts:', error);
             } finally {
-                setLoading(false); 
+                setLoading(false);
             }
         };
 
         fetchUserPosts();
-    }, [username]); 
+    }, [username]);
 
     if (loading || !user) {
-        return <Spinner />; 
+        return <Spinner />;
     }
 
     return (
@@ -42,8 +43,11 @@ export default function ProfileSection() {
                     <img src={userData.profilePicture} alt="Profile Picture" />
                 </div>
                 <div className='user-credentials'>
-                    <div className='user-fullname'>{userData.fullName}</div>
-                    <div className='user-username'>{userData.username ? `@${userData.username}` : ''}</div>
+                    <div className='user-info'>
+                        <div className='user-fullname'>{userData.fullName}</div>
+                        <div className='user-username'>{userData.username ? `@${userData.username}` : ''}</div>
+                    </div>
+                    <button className='follow-edit-button'>{user._id==userData._id ? 'Edit Profile' : 'Follow'}</button> 
                 </div>
                 <div className='buttons'>
                     <button className='posts-button'>Posts</button>
@@ -52,7 +56,7 @@ export default function ProfileSection() {
             </div>
             <div className='user-posts'>
                 {userPosts && userPosts.map(currentPost => (
-                    <PostSkeleton 
+                    <PostSkeleton
                         key={currentPost._id}
                         text={currentPost.text}
                         image={currentPost?.img}
@@ -64,7 +68,7 @@ export default function ProfileSection() {
                         numberOfLikes={currentPost.likes.length}
                         numberOfComments={currentPost.comments.length}
                         authorProfilePicture={currentPost.user.profilePicture}
-                        numberOfBookmarks={currentPost.bookmarkedBy.length} 
+                        numberOfBookmarks={currentPost.bookmarkedBy.length}
                     />
                 ))}
             </div>
