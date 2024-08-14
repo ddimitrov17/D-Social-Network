@@ -1,12 +1,7 @@
 .catalog {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
     overflow: auto;
-    display: grid;
     width: 595px;
-}
-
-.catalog-right-pane {
-    background: transparent;
-    color: #fff;
-    width: 300px;
-    border-left: 1px solid #666666;
 }
