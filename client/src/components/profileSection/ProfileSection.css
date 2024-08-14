@@ -76,7 +76,7 @@
     color: gray;
 }
 
-.follow-edit-button {
+.follow-button {
     background-color: #cd5c00; 
     width: 8rem;
     height: 5vh;
@@ -89,6 +89,29 @@
     cursor: pointer;
 }
 
-.follow-edit-button:hover {
+.follow-button:hover {
     background-color: #bb6016;
 }
+
+.edit-profile-button {
+    background-color: transparent;
+    position: relative;
+    left: 325px;
+    bottom: 75px;
+    border: 2px solid gray;
+    border-radius: 99px;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    display: inline-flex; 
+}
+
+.edit-profile-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #696d67;
+}
+
+.edit-profile-button:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+

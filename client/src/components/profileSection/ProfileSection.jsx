@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import PostSkeleton from '../Post/postSkeleton';
 import { useSelector } from 'react-redux';
 import Spinner from '../../loadingSpinner/Spinner';
+import { editSVG } from '../Post/postSVG';
 
 export default function ProfileSection() {
     const user = useSelector(state => state.user.currentUser);
@@ -47,7 +48,11 @@ export default function ProfileSection() {
                         <div className='user-fullname'>{userData.fullName}</div>
                         <div className='user-username'>{userData.username ? `@${userData.username}` : ''}</div>
                     </div>
-                    <button className='follow-edit-button'>{user._id==userData._id ? 'Edit Profile' : 'Follow'}</button> 
+                    {user._id == userData._id &&
+                        <button className='edit-profile-button'>
+                            {editSVG}
+                        </button>}
+                    {user._id !== userData._id && <button className='follow-button'>Follow</button>}
                 </div>
                 <div className='buttons'>
                     <button className='posts-button'>Posts</button>
