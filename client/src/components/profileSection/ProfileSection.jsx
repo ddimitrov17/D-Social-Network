@@ -63,6 +63,9 @@ export default function ProfileSection() {
                         </button>}
                     {user._id !== userData._id && <button className='follow-button'>Follow</button>}
                 </div>
+                <div className='user-bio'>
+                    <p>{userData.bio}</p>
+                </div>
                 <div className='buttons'>
                     <button className='posts-button'>Posts</button>
                     <button className='likes-button'>Likes</button>

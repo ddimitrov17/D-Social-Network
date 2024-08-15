@@ -31,7 +31,7 @@
 
 .buttons {
     position: relative;
-    bottom: -5%;
+    bottom: 6.5%;
     width: 100%;
 }
 
@@ -84,8 +84,9 @@
     border: none;
     border-radius: 20px;
     padding: 0.5rem 1rem;
-    position: relative;
-    left: 17rem;
+    position: absolute;
+    left: 430px;
+    bottom: 80px;
     cursor: pointer;
 }
 
@@ -113,5 +114,12 @@
 
 .edit-profile-button:hover {
     background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.user-bio {
+    position: relative;
+    left: 3%;
+    bottom: 75px;
+    color: white;
 }
 
