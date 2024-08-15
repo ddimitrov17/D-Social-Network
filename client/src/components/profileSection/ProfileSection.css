@@ -95,9 +95,9 @@
 
 .edit-profile-button {
     background-color: transparent;
-    position: relative;
-    left: 250px;
-    bottom: 75px;
+    position: absolute;
+    left: 470px;
+    bottom: 85px;
     border: 2px solid gray;
     border-radius: 99px;
     padding: 0.5rem 1.5rem;
