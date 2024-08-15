@@ -9,27 +9,22 @@ import CreateEvent from '../createEvent/CreateEvent';
 export default function LeftPane() {
   const user = useSelector((state) => state.user.currentUser);
   const [isModalOpen, setIsModalOpen] = useState(false); // create Post
-  const [isModalOpenEvent,setIsModalOpenEvent]=useState(false); // create Event
-  const navigate = useNavigate();
+  const [isModalOpenEvent, setIsModalOpenEvent] = useState(false); // create Event
 
   function createPostHandler() {
     setIsModalOpen(true);
-    navigate('/create');
   }
 
   function closeModalHandler() {
     setIsModalOpen(false);
-    navigate(-1);
   }
 
   function createEventHandler() {
     setIsModalOpenEvent(true);
-    navigate('/create-event');
   }
 
   function closeModalEventHandler() {
     setIsModalOpenEvent(false);
-    navigate(-1);
   }
 
   function accountButtonHandler() {

@@ -20,7 +20,6 @@ import { ProtectedRoute } from './components/protectedRoute/ProtectedRoute';
 export default function App() {
   const location = useLocation();
   const user = useSelector(state => state.user.currentUser);
-  // console.log(user)
   const hidePanes = location.pathname === '/register' || location.pathname === '/login';
   const dispatch = useDispatch();
 
@@ -52,7 +51,6 @@ export default function App() {
   return (
     <div className="app">
       {!hidePanes && <LeftPane />}
-      {(location.pathname === '/create' || location.pathname === '/create-event') && <Home />}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
