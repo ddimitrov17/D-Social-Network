@@ -109,7 +109,6 @@ async function editProfile(req, res) {
             const response = await fetch(url, { method: 'HEAD' });
             return response.ok && response.headers.get('Content-Type').startsWith('image/');
         } catch (error) {
-            console.log('Invalid image URL:', url);
             return false;
         }
     }
