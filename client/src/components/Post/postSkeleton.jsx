@@ -9,7 +9,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   // const [likes, setLikes] = useState(initialLikes);
   const user = useSelector((state) => state.user.currentUser);
   const isAuthor = user?._id == authorId;
-  console.log(isAuthor)
+  // console.log(isAuthor)
   const [likedByUser, setLikedByUser] = useState(false);
   const [totalLikes, setTotalLikes] = useState(numberOfLikes)
   const [bookmarkedByUser, setBookmarkedByUser] = useState(false);
@@ -63,7 +63,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       const { liked } = await response.json();
       setLikedByUser(liked);
       setTotalLikes(prevLikes => liked ? prevLikes + 1 : prevLikes - 1);
-      console.log('Post liked/unliked successfully!');
+      // console.log('Post liked/unliked successfully!');
     } catch (error) {
       console.error('There was a problem with the like functionality:', error);
     }
@@ -138,7 +138,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
         throw new Error('Failed to delete the post');
       }
 
-      console.log('Post deleted successfully!');
+      // console.log('Post deleted successfully!');
       navigate('/catalog');
     } catch (error) {
       console.error('There was a problem with the delete functionality:', error);

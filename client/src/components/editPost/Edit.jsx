@@ -7,7 +7,6 @@ export default function EditPost() {
     const navigate = useNavigate();
     const location = useLocation();
     const { text: currentText, image: currentImage, postId } = location.state || { text: '', img: '' };
-    console.log(postId)
     const [formData, setFormData] = useState({
         text: currentText,
         img: currentImage
@@ -47,7 +46,7 @@ export default function EditPost() {
             onClose();
             navigate(`/details/${postId}`);
         } catch (error) {
-            console.error('There was a problem with the signup:', error);
+            console.error('There was a problem with editing the post:', error);
         }
     };
     return (

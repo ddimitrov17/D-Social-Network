@@ -103,10 +103,74 @@ async function getBookmarkStatus(req, res) {
     }
 };
 
+async function editProfile(req, res) {
+    async function validateImageURL(url) {
+        try {
+            const response = await fetch(url, { method: 'HEAD' });
+            return response.ok && response.headers.get('Content-Type').startsWith('image/');
+        } catch (error) {
+            console.log('Invalid image URL:', url);
+            return false;
+        }
+    }
+    try {
+        const userId = req.user._id;
+        const user = await User.findById(userId); 
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const { username, fullName, email, bio } = req.body;
+        let { profilePicture, coverImage } = req.body;
+
+        // Default images
+        const defaultProfilePicture = process.env.DEFAULT_PROFILE_PICTURE;
+        const defaultCoverImage = process.env.DEFAULT_COVER_IMAGE;
+
+        const isValidProfilePicture = await validateImageURL(profilePicture);
+        if (!isValidProfilePicture) {
+            profilePicture = defaultProfilePicture;
+        }
+
+        const isValidCoverImage = await validateImageURL(coverImage);
+        if (!isValidCoverImage) {
+            coverImage = defaultCoverImage;
+        }
+
+        user.username = username;
+        user.fullName = fullName;
+        user.email = email;
+        user.bio = bio;
+
+        if (user.profilePicture !== profilePicture) {
+            const imgId = user.profilePicture.split("/").pop().split(".")[0];
+            await v2.uploader.destroy(imgId);
+            const upload = await v2.uploader.upload(profilePicture);
+            user.profilePicture = upload.secure_url;
+        }
+
+        if (user.coverImage !== coverImage) {
+            const imgId = user.coverImage.split("/").pop().split(".")[0];
+            await v2.uploader.destroy(imgId);
+            const upload = await v2.uploader.upload(coverImage);
+            user.coverImage = upload.secure_url;
+        }
+
+        await user.save(); 
+
+        res.status(200).json({ message: "User Profile edited successfully" });
+    } catch (error) {
+        console.log("Error in editProfile controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
+
 
 module.exports = {
     likePost,
     getLikeStatus,
     bookmarkPost,
-    getBookmarkStatus
+    getBookmarkStatus,
+    editProfile
 }

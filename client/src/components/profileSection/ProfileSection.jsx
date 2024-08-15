@@ -5,6 +5,7 @@ import PostSkeleton from '../Post/postSkeleton';
 import { useSelector } from 'react-redux';
 import Spinner from '../../loadingSpinner/Spinner';
 import { editSVG } from '../Post/postSVG';
+import EditProfile from '../editProfile/EditProfile';
 
 export default function ProfileSection() {
     const user = useSelector(state => state.user.currentUser);
@@ -12,6 +13,14 @@ export default function ProfileSection() {
     const [userPosts, setUserPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [userData, setUserData] = useState();
+    const [isModalOpen, setIsModalOpen] = useState(false); // edit Profile
+
+    function editProfileHandler() {
+        setIsModalOpen(true);
+    }
+    function closeModalHandler() {
+        setIsModalOpen(false);
+    }
 
     useEffect(() => {
         const fetchUserPosts = async () => {
@@ -49,7 +58,7 @@ export default function ProfileSection() {
                         <div className='user-username'>{userData.username ? `@${userData.username}` : ''}</div>
                     </div>
                     {user._id == userData._id &&
-                        <button className='edit-profile-button'>
+                        <button className='edit-profile-button' onClick={editProfileHandler}>
                             {editSVG}
                         </button>}
                     {user._id !== userData._id && <button className='follow-button'>Follow</button>}
@@ -76,6 +85,13 @@ export default function ProfileSection() {
                         numberOfBookmarks={currentPost.bookmarkedBy.length}
                     />
                 ))}
+                {isModalOpen && <EditProfile onClose={closeModalHandler} 
+                email={user.email}
+                fullName={user.fullName}
+                username={user.username}
+                profilePicture={user.profilePicture}
+                coverImage={user.coverImage}
+                bio={user.bio}/>}
             </div>
         </div>
     )

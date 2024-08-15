@@ -7,6 +7,7 @@ import CreatePost from '../createPost/CreatePost';
 import CreateEvent from '../createEvent/CreateEvent';
 
 export default function LeftPane() {
+  const navigate=useNavigate();
   const user = useSelector((state) => state.user.currentUser);
   const [isModalOpen, setIsModalOpen] = useState(false); // create Post
   const [isModalOpenEvent, setIsModalOpenEvent] = useState(false); // create Event

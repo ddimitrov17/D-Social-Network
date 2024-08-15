@@ -35,7 +35,7 @@ export default function EventSkeleton({
                 }
 
                 const { going: goingStatus, interested: interestedStatus } = await response.json();
-                console.log(goingStatus, interestedStatus)
+                // console.log(goingStatus, interestedStatus)
                 setAlreadyGoing(goingStatus);
                 setAlreadyInterested(interestedStatus);
             } catch (error) {
