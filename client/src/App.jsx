@@ -6,7 +6,7 @@ import './App.css';
 import SignUp from './components/signup/SignUp';
 import LoginPage from './components/login/Login';
 import Catalog from './components/catalog/Catalog';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Logout from './components/logout/Logout';
 import Details from './components/details/Details';
@@ -16,10 +16,12 @@ import Explore from './components/explore/Explore';
 import Bookmarks from './components/bookmarks/Bookmarks';
 import { logoutUser, setUser } from './redux/actions/userActions';
 import { ProtectedRoute } from './components/protectedRoute/ProtectedRoute';
+import Spinner from './loadingSpinner/Spinner';
 
 export default function App() {
   const location = useLocation();
   const user = useSelector(state => state.user.currentUser);
+  const [loading, setLoading] = useState(true);
   const hidePanes = location.pathname === '/register' || location.pathname === '/login';
   const dispatch = useDispatch();
 
@@ -43,11 +45,16 @@ export default function App() {
         }
       } catch (error) {
         console.log('Error in getting current user');
-      }
+      } finally {
+        setLoading(false); 
+    }
     };
     getCurrentUser();
   }, [location.pathname, dispatch]);
 
+  if (loading) {
+    return <Spinner/>
+  }
   return (
     <div className="app">
       {!hidePanes && <LeftPane />}
@@ -60,7 +67,7 @@ export default function App() {
         <Route path="/register" element={user ? <Navigate to="/catalog" /> : <SignUp />} /> // For Non-Logged Users
         <Route path="/login" element={user ? <Navigate to="/catalog" /> : <LoginPage />} /> // For Non-Logged Users
         <Route path="/logout" element={<ProtectedRoute element={<Logout />} user={user} />} /> // For Logged Users
-        <Route path='/details/:id' element={<Details />} /> 
+        <Route path='/details/:id' element={<Details />} />
         <Route path="/edit/:id" element={<ProtectedRoute element={<EditPost />} user={user} />} /> // For Logged Users
       </Routes>
       {!hidePanes && <RightPane />}
