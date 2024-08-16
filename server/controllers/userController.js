@@ -163,7 +163,57 @@ async function editProfile(req, res) {
         console.log("Error in editProfile controller: ", error);
         res.status(500).json({ error: "Internal server error" });
     }
-}
+};
+
+async function followUser(req, res) {
+    try {
+        currentlyLoggedUser=req.user._id;
+        const { id: userId } = req.params;
+        console.log(userId)
+
+        const user = await User.findById(userId);
+
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const userAlreadyFollows = user.followers.includes(currentlyLoggedUser);
+
+        if (userAlreadyFollows) {
+            await User.updateOne({ _id: currentlyLoggedUser }, { $pull: { following: userId } });
+            await User.updateOne({ _id: userId }, { $pull: { followers: currentlyLoggedUser } });
+
+            res.status(200).json({ followed: false });
+        } else {
+            await User.updateOne({ _id: userId }, { $push: { followers: currentlyLoggedUser } });
+            await User.updateOne({ _id: currentlyLoggedUser }, { $push: { following: userId } });
+
+            res.status(200).json({ followed: true });
+        }
+    } catch (error) {
+        console.log("Error in followUser controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+async function followingStatus(req, res) {
+    try {
+        const currentlyLoggedUser = req.user._id;
+        console.log(currentlyLoggedUser)
+        const { id: userId } = req.params;
+
+        const user = await User.findById(userId).lean();
+        if (!user) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const followed = user.followers.map(follower => follower.toString()).includes(currentlyLoggedUser.toString());
+        res.status(200).json({ followed });
+    } catch (error) {
+        console.error("Error in getFollowStatus controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
 
 
 module.exports = {
@@ -171,5 +221,7 @@ module.exports = {
     getLikeStatus,
     bookmarkPost,
     getBookmarkStatus,
-    editProfile
+    editProfile,
+    followUser,
+    followingStatus
 }
