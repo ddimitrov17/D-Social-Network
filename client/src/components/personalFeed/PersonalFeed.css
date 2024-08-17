@@ -1,0 +1,7 @@
+.personal-feed {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+    overflow: auto;
+    width: 595px;
+}

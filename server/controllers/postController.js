@@ -242,7 +242,30 @@ async function postExplore(req, res) {
         console.log('Search Error:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
+};
+
+async function getFollowingPosts(req, res) {
+    try {
+        const userId = req.user._id;
+
+        const currentUser = await User.findById(userId).populate('following');
+        if (!currentUser) {
+            return res.status(404).json({ error: "User not found" });
+        }
+
+        const followingIds = currentUser.following.map(followingUser => followingUser._id);
+        const posts = await Post.find({ user: { $in: followingIds } })
+            .sort({ createdAt: -1 }) 
+            .populate('user', 'username fullName profilePicture') 
+            .lean();
+
+        res.status(200).json(posts);
+    } catch (error) {
+        console.error("Error in getFollowingPosts controller: ", error);
+        res.status(500).json({ error: "Internal server error" });
+    }
 }
+
 
 
 
@@ -255,5 +278,6 @@ module.exports = {
     editPost,
     getTopThreePosts,
     getProfile,
-    postExplore
+    postExplore,
+    getFollowingPosts
 }
