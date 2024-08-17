@@ -1,3 +1,4 @@
+const { v2 } = require("cloudinary");
 const { Post } = require("../models/postModel");
 const { User } = require("../models/userModel");
 
