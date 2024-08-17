@@ -200,7 +200,7 @@ async function followUser(req, res) {
 async function followingStatus(req, res) {
     try {
         const currentlyLoggedUser = req.user._id;
-        console.log(currentlyLoggedUser)
+        // console.log(currentlyLoggedUser)
         const { id: userId } = req.params;
 
         const user = await User.findById(userId).lean();

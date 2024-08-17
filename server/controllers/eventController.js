@@ -4,7 +4,7 @@ const { v2 } = require('cloudinary');
 
 async function eventCreate(req, res) {
     try {
-        console.log(req.body)
+        // console.log(req.body)
         let { name, description, img, date, location, going, interested } = req.body;
         const userId = req.user.id.toString();
         const user = await User.findById(userId);

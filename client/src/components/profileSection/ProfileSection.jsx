@@ -30,7 +30,6 @@ export default function ProfileSection() {
                 const postsData = await response.json();
                 setUserPosts(postsData.posts);
                 setUserData(postsData.userData);
-                console.log(postsData.userData);
             } catch (error) {
                 console.error('Error fetching posts:', error);
             } finally {

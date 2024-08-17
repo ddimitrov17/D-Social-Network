@@ -28,7 +28,6 @@ async function signup(req, res) {
             res.status(400).json({ error: "Invalid User data" });
         }
     } catch (error) {
-        console.log(error)
         res.status(500).json({ error: "Internal Server Error" });
     }
 };
