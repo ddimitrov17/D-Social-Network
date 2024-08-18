@@ -1,9 +1,48 @@
 .right-pane {
   background-color: #001d1c;
-  /* background: transparent; */
   color: #fff;
   width: 100%;
   border-left: 1px solid #666666; 
 }
 
+.suggested { 
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 28vh; 
+  border: 1px solid gray;
+  border-radius: 20px;
+  margin-left: 150px;
+  margin-top: 50px;
+  padding: 1rem; 
+}
 
+.user-match-container {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  margin-bottom: 0.5rem;
+}
+
+.follow-button-suggested {
+  background-color: #cd5c00; 
+  width: 8rem;
+  height: 5vh;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.follow-button-suggested:hover {
+  background-color: #bb6016;
+}
+
+.no-users {
+  color: #fff;
+  text-align: center;
+  margin-top: 2rem;
+  font-weight: bold;
+  font-size: large;
+}
