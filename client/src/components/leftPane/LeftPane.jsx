@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { home, explore, bookmarks, profile, catalog, more, signup, logout, login, personalFeed } from './icons';
+import { home, explore, bookmarks, profile, catalog, more, signup, logout, login, personalFeed, eventsIcon } from './icons';
 import './leftPane.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -47,6 +47,9 @@ export default function LeftPane() {
               <span>{personalFeed} Personal Feed</span>
             </NavLink>
           )}
+          <NavLink to="/events" activeclassname="selected">
+            <span>{eventsIcon}Events</span>
+          </NavLink>
           <NavLink to="/explore" activeclassname="selected">
             <span>{explore} Explore</span>
           </NavLink>

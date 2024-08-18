@@ -18,6 +18,7 @@ import { logoutUser, setUser } from './redux/actions/userActions';
 import { ProtectedRoute } from './components/protectedRoute/ProtectedRoute';
 import Spinner from './loadingSpinner/Spinner';
 import PersonalFeed from './components/personalFeed/PersonalFeed';
+import EventsCatalog from './components/eventsCatalog/EventsCatalog';
 
 export default function App() {
   const location = useLocation();
@@ -64,6 +65,7 @@ export default function App() {
         <Route path='/catalog' element={<Catalog />} />
         <Route path='/personalfeed' element={<PersonalFeed/>}/>
         <Route path="/explore" element={<Explore />} />
+        <Route path='/events' element={<EventsCatalog/>}/>
         <Route path="/bookmarks" element={<ProtectedRoute element={<Bookmarks />} user={user} />} />
         <Route path="/profile/:username" element={user ? <ProfileSection /> : <Navigate to="/login" />} /> // For Logged Users
         <Route path="/register" element={user ? <Navigate to="/catalog" /> : <SignUp />} /> // For Non-Logged Users
