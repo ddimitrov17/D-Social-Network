@@ -14,3 +14,5 @@ of seeing the catalog without of course having the ability to interact with it i
 - **Error Handling and form validation**: Forms are controlled and users are unable to submit if they are not filled correctly, implementefd error handling 
 - **Authorization & Route Protecting**: Inability for ineligible users to go to certain routes 
 - **Event Creating and Responding**: Users are able to create events and respond to them by 'Going' or 'Interested'
+- **Following/Unfollowing Users & Personal Feed**: Users can follow/unfollow each other and have a personal feed including the posts of the people they follow
+- **Edit Profile functionality**: Users are able to update their profile info including their profile picture and cover images
