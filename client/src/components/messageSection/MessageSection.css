@@ -1,0 +1,28 @@
+.message-section {
+    width: 1300px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-section-box {
+    width: 1000px;
+    height: 50rem;
+    border: 2px solid gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-content {
+    width: 60%;
+    height: 100%;
+}
+
+.sidebar {
+    border-left: 2px solid gray;
+    width: 40%;
+    height: 100%;
+}

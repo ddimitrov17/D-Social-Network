@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { home, explore, bookmarks, profile, catalog, more, signup, logout, login, personalFeed, eventsIcon } from './icons';
+import { home, explore, bookmarks, profile, catalog, more, signup, logout, login, personalFeed, eventsIcon, messageSection } from './icons';
 import './leftPane.css';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -7,7 +7,7 @@ import CreatePost from '../createPost/CreatePost';
 import CreateEvent from '../createEvent/CreateEvent';
 
 export default function LeftPane() {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.currentUser);
   const [isModalOpen, setIsModalOpen] = useState(false); // create Post
   const [isModalOpenEvent, setIsModalOpenEvent] = useState(false); // create Event
@@ -53,6 +53,11 @@ export default function LeftPane() {
           <NavLink to="/explore" activeclassname="selected">
             <span>{explore} Explore</span>
           </NavLink>
+          {user && (
+            <NavLink to="/messages" activeclassname="selected">
+              <span>{messageSection} Message Section</span>
+            </NavLink>
+          )}
           {user && (
             <NavLink to="/bookmarks" activeclassname="selected">
               <span>{bookmarks} Bookmarks</span>

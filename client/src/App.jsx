@@ -19,6 +19,7 @@ import { ProtectedRoute } from './components/protectedRoute/ProtectedRoute';
 import Spinner from './loadingSpinner/Spinner';
 import PersonalFeed from './components/personalFeed/PersonalFeed';
 import EventsCatalog from './components/eventsCatalog/EventsCatalog';
+import MessageSection from './components/messageSection/MessageSection';
 
 export default function App() {
   const location = useLocation();
@@ -67,6 +68,7 @@ export default function App() {
         <Route path="/explore" element={<Explore />} />
         <Route path='/events' element={<EventsCatalog/>}/>
         <Route path="/bookmarks" element={<ProtectedRoute element={<Bookmarks />} user={user} />} />
+        <Route path='/messages' element={<MessageSection/>}/>
         <Route path="/profile/:username" element={user ? <ProfileSection /> : <Navigate to="/login" />} /> // For Logged Users
         <Route path="/register" element={user ? <Navigate to="/catalog" /> : <SignUp />} /> // For Non-Logged Users
         <Route path="/login" element={user ? <Navigate to="/catalog" /> : <LoginPage />} /> // For Non-Logged Users
@@ -74,7 +76,7 @@ export default function App() {
         <Route path='/details/:id' element={<Details />} />
         <Route path="/edit/:id" element={<ProtectedRoute element={<EditPost />} user={user} />} /> // For Logged Users
       </Routes>
-      {!hidePanes && <RightPane />}
+      {(!hidePanes && location.pathname!=="/messages") && <RightPane />}
     </div>
   );
 }

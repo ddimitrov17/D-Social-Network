@@ -2,6 +2,8 @@ const mongoose = require("mongoose");
 const { User } = require("../models/userModel");
 const { Post } = require("../models/postModel");
 const { Event } = require("../models/eventModel");
+const { Conversation } = require("../models/conversationModel");
+const { Message } = require("../models/messageModel");
 
 async function mongoConnection() {
     try {
