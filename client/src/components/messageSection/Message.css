@@ -1,0 +1,50 @@
+.chat-container {
+    display: flex;
+    align-items: center; 
+    margin-bottom: 16px; 
+    width: 100%;
+}
+
+.chat-start {
+    justify-content: flex-start; 
+}
+
+.chat-end {
+    justify-content: flex-end; 
+}
+
+.chat-image {
+    display: flex;
+    margin-top: 20px;
+    margin-right: -10px; 
+    margin-left: 25px;
+}
+
+.profile-picture {
+    width: 40px; 
+    height: 40px;
+    border-radius: 50%; 
+    object-fit: cover; 
+}
+
+.chat {
+    display: flex;
+    align-items: center;
+    max-width: 70%; 
+    margin-bottom: 30px;
+}
+
+.chat-bubble {
+    padding: 8px 12px; 
+    border-radius: 20px;
+    color: white;
+    word-wrap: break-word; 
+}
+
+.chat-start .chat-bubble {
+    background-color: #cd5c00; 
+}
+
+.chat-end .chat-bubble {
+    background-color: #b3bac5; 
+}
