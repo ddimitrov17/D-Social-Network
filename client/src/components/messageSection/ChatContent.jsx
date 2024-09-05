@@ -3,6 +3,7 @@ import Message from "./Message";
 import './MessageSection.css';
 import { useEffect, useRef, useState } from "react";
 import Spinner from "../../loadingSpinner/Spinner";
+import { useSocketContext } from "../../context/SocketContext";
 
 export default function ChatContent({
     messagesArray,
@@ -16,6 +17,16 @@ export default function ChatContent({
     const [isUserLoaded, setIsUserLoaded] = useState(false);
     const [message, setMessage] = useState("");
     const [loadingMessage, setLoadingMessage] = useState(false);
+
+    const { socket } = useSocketContext();
+
+	useEffect(() => {
+		socket?.on("newMessage", (newMessage) => {
+			onAddMessage(newMessage)
+		});
+
+		return () => socket?.off("newMessage");
+	}, [socket, messagesArray]);
 
     const lastMessageRef = useRef(null);
 

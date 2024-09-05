@@ -1,6 +1,7 @@
 const { Conversation } = require('../models/conversationModel');
 const { Message } = require('../models/messageModel');
 const { User } = require('../models/userModel');
+const { getReceiverSocketId, io} = require('../socket/socket');
 
 async function sendMessage(req, res) {
     try {
@@ -29,6 +30,11 @@ async function sendMessage(req, res) {
         }
 
         await Promise.all([conversation.save(), newMessage.save()]);
+
+        const receiverSocketId=getReceiverSocketId(receiverId);
+        if (receiverSocketId) {
+            io.to(receiverSocketId).emit("newMessage",newMessage);
+        }
 
         res.status(201).json(newMessage);
     } catch (error) {
@@ -77,7 +83,7 @@ async function getUserConversations(req, res) {
             return conversation;
         });
 
-        console.log(filteredConversations);
+        // console.log(filteredConversations);
         res.status(200).json(filteredConversations);
     } catch (error) {
         console.log("Error in getUserConversations controller: ", error.message);

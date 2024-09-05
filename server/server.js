@@ -10,6 +10,7 @@ const { postRoutes } = require("./routes/postRouter.js");
 const { userRoutes } = require("./routes/userRouter.js");
 const { eventRoutes } = require("./routes/eventRouter.js");
 const { messageRoutes } = require("./routes/messageRoutes.js");
+const { app, server } = require("./socket/socket.js");
 
 dotenv.config();
 
@@ -19,7 +20,7 @@ v2.config({
     api_secret: process.env.CLOUDINARY_API_SECRET
 });
 
-const app = express();
+// const app = express();
 
 app.use(cors({
     origin: 'http://localhost:5173', 
@@ -36,7 +37,7 @@ app.use("/api/messages",messageRoutes)
 const PORT = process.env.PORT || 5000;
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}...`);
     mongoConnection();
 });
