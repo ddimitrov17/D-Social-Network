@@ -16,3 +16,4 @@ of seeing the catalog without of course having the ability to interact with it i
 - **Event Creating and Responding**: Users are able to create events and respond to them by 'Going' or 'Interested'
 - **Following/Unfollowing Users & Personal Feed**: Users can follow/unfollow each other and have a personal feed including the posts of the people they follow
 - **Edit Profile functionality**: Users are able to update their profile info including their profile picture and cover images
+- **Message Section & Live Chatting Functionality**: Logged In Users are are able to communicate in real time and to have personal conversations between them
