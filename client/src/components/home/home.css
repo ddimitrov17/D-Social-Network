@@ -1,7 +1,6 @@
 .home {
   background: transparent;
   color: #ffffff;
-  width: 595px;
 }
 
 .home-main-content {
@@ -10,8 +9,7 @@
 
 .home-header {
   display: flex;
-  border-bottom: 1px solid #666666; 
-  width: 100%;
+  border-bottom: 1px solid #232D3F; 
   font-weight: 500;
 }
 
@@ -19,11 +17,7 @@
   display: flex;
   position: relative;
   padding: 0.75rem;
-  flex: 1 1 0%;
+  align-items: center;
+  flex: 1;
   justify-content: center;
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  transition-duration: 300ms;
-  cursor: pointer;
 }

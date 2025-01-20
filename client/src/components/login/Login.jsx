@@ -113,10 +113,7 @@ export default function LoginPage() {
           <button className="login-button">Login</button>
         </form>
         <div className="login-signin-container">
-          <p className="login-signin-text">Don't have an account?</p>
-          <Link to="/register">
-            <button className="login-button-outline">Sign up</button>
-          </Link>
+          <p className="login-signin-text">Don't have an account? <Link to="/register" className="login-signin-link">Sign up</Link></p>
         </div>
       </div>
       {errors.general && <ErrorComponent message={errors.general} onClose={() => setErrors((prevErrors) => ({ ...prevErrors, general: '' }))} />}

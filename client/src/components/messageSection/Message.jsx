@@ -25,25 +25,17 @@ export default function Message({ messageContent, messageSenderID, senderProfile
         <div className={`chat-container ${chatClassName}`}>
             {!fromMe && (
                 <>
-                    <div className='chat-image'>
-                        <img className='profile-picture' src={profilePic} alt='Profile' />
+                    <div className="image-container-pic">
+                        <img className='profile-picture-message' src={profilePic} alt='Profile' />
                     </div>
-                    <div className='chat'>
-                        <div className='chat-bubble'>
-                            {messageContent}
-                        </div>
-                    </div>
+                    <div className='chat-bubble'>{messageContent}</div>
                 </>
             )}
             {fromMe && (
                 <>
-                    <div className='chat'>
-                        <div className='chat-bubble'>
-                            {messageContent}
-                        </div>
-                    </div>
-                    <div className='chat-image'>
-                        <img className='profile-picture' src={profilePic} alt='Profile' />
+                    <div className='chat-bubble'>{messageContent}</div>
+                    <div className="image-container-pic">
+                        <img className='profile-picture-message' src={profilePic} alt='Profile' />
                     </div>
                 </>
             )}

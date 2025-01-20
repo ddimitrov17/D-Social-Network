@@ -2,37 +2,34 @@
     display: flex;
     flex-direction: column;
     width: 300px;
-    height: 50vh;
-    border: 1px solid gray;
+    border: 1px solid #232D3F;
     border-radius: 20px;
     margin-top: 50px;
+    overflow: hidden;
+}
+
+.event-skeleton:last-child {
+    margin-bottom: 50px;
 }
 
 .event-image img {
-    width: 300px;
-    height: 20vh;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-}
-
-.event-information {
     width: 100%;
-    height: 100%;
+    height: 200px;
 }
 
 .event-name , .event-date, .event-location, .going-count, .interested-count {
-    margin: 15px;
+    margin: 12px;
+    display: flex;
+    align-items: center;
 }
 
 .event-information svg {
     width: 1.5em; 
-    height: 1.5em; 
-    vertical-align: middle; 
+    height: 1.5em;  
     margin-right: 8px; 
 }
 
 .event-functionality {
-    position: relative;
     width: 100%;
 }
 
@@ -42,16 +39,16 @@
     border: none;
     color: white;
     cursor: pointer;
-    border-radius: 20px;
     transition: background-color 0.3s ease;
+    padding: 0.5em;
 }
 
 .functionalities-going:hover, .functionalities-interested:hover {
-    background-color: #bb6016;
+    background-color: #005B41;
 }
 
 .already-responded {
     text-align: center;
-    margin: 12px;
-    font-weight: bold;
+    margin: 8px;
+    font-weight: 700;
 }

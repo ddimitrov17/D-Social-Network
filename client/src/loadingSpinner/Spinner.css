@@ -6,8 +6,8 @@
 }
 
 .loading {
-    border: 8px solid #f3f3f3; 
-    border-top: 8px solid orange; 
+    border: 8px solid #232D3F; 
+    border-top: 8px solid #005B41; 
     border-radius: 50%;
     width: 60px; 
     height: 60px;

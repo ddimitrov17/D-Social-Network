@@ -17,7 +17,7 @@ export default function PostReply({ postId }) {
     }
 
     async function commentSubmitHandler(e) {
-        e.preventDefault(); 
+        e.preventDefault();
         if (!user) {
             navigate('/login');
             return;
@@ -42,30 +42,28 @@ export default function PostReply({ postId }) {
     }
 
     return (
-        <div className='replyToPost'>
-            <div className='reply-post'>
-                <form className='form' onSubmit={commentSubmitHandler}>
-                    <textarea
-                        className='textarea'
-                        placeholder='Post your reply'
-                        name='text'
-                        onChange={onChangeHandler}
-                        required 
-                    />
-                    <input type="text"
-                        name='img'
-                        className='textarea-image'
-                        placeholder='Insert image link here...'
-                        onChange={onChangeHandler} 
-                    />
-                    <button 
-                        className='button' 
-                        type='submit'
-                    >
-                        Reply
-                    </button>
-                </form>
-            </div>
+        <div className='reply-post'>
+            <form className='form' onSubmit={commentSubmitHandler}>
+                <textarea
+                    className='textarea'
+                    placeholder='Post your reply'
+                    name='text'
+                    onChange={onChangeHandler}
+                    required
+                />
+                <input type="text"
+                    name='img'
+                    className='textarea-image'
+                    placeholder='Insert image link here...'
+                    onChange={onChangeHandler}
+                />
+                <button
+                    className='button'
+                    type='submit'
+                >
+                    Reply
+                </button>
+            </form>
         </div>
     );
 }

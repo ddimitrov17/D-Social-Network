@@ -1,14 +1,15 @@
 .signup-container {
-  max-width: 1440px;
   margin: 0 auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  padding-left: 120%;
+  gap: 30px;
 }
 
 .signup-image-container {
   flex: 1;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -16,13 +17,7 @@
 .signup-image {
   width: 200px;
   height: 200px;
-  fill: white;
-}
-
-@media (min-width: 1024px) {
-  .signup-image-container {
-    display: flex;
-  }
+  fill: #008170;
 }
 
 .signup-form-container {
@@ -34,48 +29,30 @@
 }
 
 .signup-form {
-  width: 66.6667%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-}
-
-.signup-small-image {
-  width: 6rem;
-  fill: white;
-  display: block;
-}
-
-@media (min-width: 768px) {
-  .signup-form {
-    width: auto;
-    margin: 0 5rem;
-  }
-
-  .signup-small-image {
-    display: none;
-  }
+  width: auto;
 }
 
 .signup-title {
-  font-size: 2.25rem;
+  font-size: 2em;
   font-weight: 800;
   color: white;
 }
 
 .signup-input-container {
   display: flex;
-  align-items: center;
   gap: 0.5rem;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.375rem;
+  background-color: #232D3F;
+  border-radius: 5px;
   padding: 0.5rem;
+  width: 100%;
 }
 
 .signup-input {
-  flex-grow: 1;
+  background-color: #232D3F;
   border: none;
   outline: none;
 }
@@ -87,12 +64,14 @@
 }
 
 .signup-button {
-  background-color: #bb6016;
+  background-color: #008170;
   color: white;
   border: none;
-  border-radius: 9999px;
+  border-radius: 15px;
   padding: 0.75rem 1.5rem;
   cursor: pointer;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .signup-button-outline {
@@ -107,22 +86,16 @@
 .signup-signin-container {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
   margin-top: 1rem;
 }
 
 .signup-signin-text {
   color: white;
-  font-size: 1.125rem;
 }
 
-.signup-input-container-error {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 0.375rem;
-  padding: 0.5rem;
-  border-color: red; /* Change this according to your design */
+.signup-signin-link {
+  color: #008170;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
 }

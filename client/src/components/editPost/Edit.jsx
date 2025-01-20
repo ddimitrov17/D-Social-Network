@@ -64,7 +64,7 @@ export default function EditPost() {
                     name='img'
                     onChange={changeFormHandler}
                     value={formData.img} />
-                <button className='button'>Edit</button>
+                <button className='edit-post-button'>Edit</button>
             </form>
         </div>
     );

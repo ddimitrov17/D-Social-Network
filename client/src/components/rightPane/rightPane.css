@@ -1,31 +1,28 @@
 .right-pane {
-  background-color: #001d1c;
   color: #fff;
   width: 100%;
-  border-left: 1px solid #666666; 
+  border-left: 1px solid #232D3F; 
 }
 
 .suggested { 
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 28vh; 
-  border: 1px solid gray;
-  border-radius: 20px;
-  margin-left: 150px;
-  margin-top: 50px;
-  padding: 1rem; 
+  width: 400px; 
+  border: 1px solid #232D3F;
+  border-radius: 15px;
+  padding: 1em; 
+  margin: 50px auto;
+  gap: 5px;
 }
 
 .user-match-container {
   display: flex; 
   align-items: center; 
-  justify-content: space-between; 
-  margin-bottom: 0.5rem;
+  justify-content: space-between;
 }
 
 .follow-button-suggested {
-  background-color: #cd5c00; 
+  background-color: #008170; 
   width: 8rem;
   height: 5vh;
   color: white;
@@ -36,13 +33,12 @@
 }
 
 .follow-button-suggested:hover {
-  background-color: #bb6016;
+  background-color: #005B41;
 }
 
 .no-users {
   color: #fff;
   text-align: center;
-  margin-top: 2rem;
   font-weight: bold;
   font-size: large;
 }

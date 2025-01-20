@@ -147,10 +147,7 @@ export default function SignUp() {
         </form>
 
         <div className="signup-signin-container">
-          <p className="signup-signin-text">Already have an account?</p>
-          <Link to="/login">
-            <button className="signup-button-outline">Sign in</button>
-          </Link>
+          <p className="signup-signin-text">Already have an account? <Link to="/login" className="signup-signin-link">Sign in</Link></p>
         </div>
       </div>
 

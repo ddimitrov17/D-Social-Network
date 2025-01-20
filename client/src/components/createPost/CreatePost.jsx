@@ -49,7 +49,7 @@ export default function CreatePost({ onClose }) {
 						onChange={changeFormHandler}
 					/>
 					<input type="text" className='image' placeholder='Insert image link here...' name='img' onChange={changeFormHandler} />
-					<button className='button'>Post</button>
+					<button className='create-post-button'>Post</button>
 				</form>
 			</div>
 		</div>

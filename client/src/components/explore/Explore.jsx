@@ -32,7 +32,7 @@ export default function Explore() {
 
             const data = await response.json();
             setSearchResults(data);
-            console.log(data)
+            // console.log(data)
         } catch (error) {
             console.error('Error fetching search results:', error);
         }
@@ -40,17 +40,14 @@ export default function Explore() {
 
     return (
         <div className='explore'>
-            <div className="search-section">
-                <div className='search-panel'>
-                    <form className="search-form">
-                        <input type="text"
-                            className='search-input'
-                            placeholder='Search Posts...'
-                            onChange={searchHandler} />
-                    </form>
-                </div>
+            <div className='search-panel'>
+                    <input type="text"
+                        className='search-input'
+                        placeholder='Search Posts...'
+                        onChange={searchHandler} />
             </div>
-            <div className='people-matches'>
+            { searchResults?.users?.length > 0 && (<div className='people-matches'>
+                { (searchQuery.length > 0 && searchResults?.users?.length > 0) && (<h3 className='mini-heading-people'>People</h3>)}
                 {searchResults.users && searchResults.users.map(currentUser => (
                     <UserMatch
                         key={currentUser._id}
@@ -58,8 +55,9 @@ export default function Explore() {
                         fullName={currentUser.fullName}
                         username={currentUser.username} />
                 ))}
-            </div>
-            <div className='post-matches'>
+            </div>)}
+            { searchResults?.posts?.length > 0 && (<div className='post-matches'>
+            { (searchQuery.length > 0 && searchResults?.posts?.length > 0) && (<h3 className='mini-heading-posts'>Posts</h3>)}
                 {searchResults.posts && searchResults.posts.map(currentPost => (
                     <PostSkeleton
                         key={currentPost._id}
@@ -75,7 +73,7 @@ export default function Explore() {
                         numberOfBookmarks={currentPost.bookmarkedBy.length}
                     />
                 ))}
-            </div>
+            </div>)}
         </div>
     );
 }

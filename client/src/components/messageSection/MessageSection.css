@@ -1,61 +1,58 @@
 .message-section {
-    width: 1300px;
-    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 2;
 }
 
 .message-section-box {
-    width: 1000px;
+    width: 50vw;
     height: 50rem;
-    border: 2px solid gray;
+    border: 2px solid #232D3F;
     border-radius: 10px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .chat-content {
-    width: 60%;
-    height: 100%;
+    flex: 6;
 }
 
 .sidebar {
-    border-left: 2px solid gray;
-    width: 40%;
-    height: 100%;
+    border-left: 2px solid #232D3F;
+    flex: 4;
 }
 
 .conversation-search-section {
-    width: 100%;
+    /* width: 100%; */
     height: 8%;
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid #232D3F;
+}
+
+.conversation-search-section>form {
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    gap: 20px;
 }
 
 .conversation-input-search {
-    position: absolute;
-    left: 20px;
-    top: 15px;
     height: 2rem;
-    width: 60%;
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid #232D3F;
     border-radius: 5px;
     color: white;
     font-weight: bold;
+    padding: 5px;
+    width: 50%;
 }
 
 .conversation-search-button {
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    background-color: #cd5c00;
+    background-color: #008170;
+    padding: 5px;
+    border-radius: 10px;
     color: white;
+    width: 20%;
 }
 
 .user-conversation-button {
@@ -68,7 +65,7 @@
 }
 
 .user-conversation-button-clicked {
-    background-color: #c1bab4;
+    background-color: #005B41;
     color: white;
     width: 100%;
     height: 6vh;
@@ -127,42 +124,59 @@
 
 .chat-to-overflow {
     overflow: auto;
-    scrollbar-width: none;
-    height: 45rem;
+    height: 100%;
+    padding-top: 4em;
+    padding-bottom: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.current-chat-label {
+    position: absolute;
+    top: 0px;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    height: 3em;
+    background-color: #232D3F;
 }
 
 .chat-to-overflow::-webkit-scrollbar {
     display: none;
 }
 
-.message-input-form {
-    width: 600px;
-}
-
 .message-input-container {
     position: absolute;
     bottom: 0px;
+    left: 0px;
+    width: 100%;
 }
 
 .message-input-field {
-    border: 1px solid #4b5563;
-    background-color: #c1bab4;
+    outline: none;
+    border: none;
     color: white;
+    background-color: #232D3F;
     height: 2.5rem;
     border-bottom-left-radius: 9px;
-    width: 594px;
+    width: 100%;
 }
 
+.message-input-form {
+    width: 100%;
+}
 .message-send-button {
     position: absolute;
     right: 12px;
     top: 50%;
     height: 2rem;
     transform: translateY(-50%);
-    background-color: #cd5c00;
+    background-color: #008170;
     color: white;
     display: flex;
     align-items: center;
+    padding: 5px;
+    border-radius: 10px;
 }
 
 .welcome-div {

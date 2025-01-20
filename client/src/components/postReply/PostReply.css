@@ -1,68 +1,59 @@
-.replyToPost {
-    border-bottom: 1px solid gray;
-}
-
 .reply-post {
-    position: relative;
+    border-bottom: none;
     display: flex;
     flex-direction: column;
-    padding: 5rem;
-    background-color: #001d1c;
-    border-radius: 5px;
-    width: 400px;
-    height: 70px;
+    background-color: transparent;
+    width: 100%;
+    height: 200px;
+    padding: 2em;
+    position: relative;
+    border: 1px solid #232D3F;
 }
 
 .reply-post .form {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 20px;
     width: 100%;
+    height: 100%;
 }
 
 .reply-post .textarea {
-    position: absolute;
-    left: 1rem;
-    top: 1rem;
     width: 100%;
-    height: 13vh;
-    padding: 2px;
+    height: 80%;
+    padding: 5px;
     font-size: 1.125rem;
     resize: none;
     outline: none;
-    background: #001d1c;
-    cursor: inherit;
+    background: #232D3F;
     color: white;
-    border: 1px solid gray;
+    border: none;
+    border-radius: 5px;
+}
+
+.reply-post .textarea-image {
+    width: 80%;
+    height: 15%;
+    padding: 10px;
+    font-size: 1.125rem;
+    resize: none;
+    outline: none;
+    background: #232D3F;
+    color: white;
+    border: none;
     border-radius: 5px;
 }
 
 .reply-post .button {
-    background-color: #cd5c00;
-    border-radius: 9999px;
+    background-color: #008170;
+    border-radius: 10px;
     color: white;
     position: absolute;
+    right: 1rem;
     bottom: 1rem;
-    right: -1rem;
+    padding: 8px;
 }
 
 .reply-post .button:hover {
-    background-color: #bb6016;
-}
-
-.reply-post .textarea-image {
-    position: absolute;
-    left: 1rem;
-    bottom: 1rem;
-    width: 70%;
-    height: 4vh;
-    padding: 2px;
-    font-size: 1.125rem;
-    resize: none;
-    outline: none;
-    background: #001d1c;
-    cursor: inherit;
-    color: white;
-    border: 1px solid gray;
-    border-radius: 5px;
+    background-color: #005B41;
 }

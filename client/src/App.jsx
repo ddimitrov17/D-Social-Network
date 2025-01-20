@@ -60,7 +60,7 @@ export default function App() {
   }
   return (
     <div className="app">
-      {!hidePanes && <LeftPane />}
+      {!hidePanes && <LeftPane className="left-pane" />}
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/catalog' element={<Catalog />} />
@@ -76,7 +76,7 @@ export default function App() {
         <Route path='/details/:id' element={<Details />} />
         <Route path="/edit/:id" element={<ProtectedRoute element={<EditPost />} user={user} />} /> // For Logged Users
       </Routes>
-      {(!hidePanes && location.pathname!=="/messages") && <RightPane />}
+      {(!hidePanes && location.pathname!=="/messages") && <RightPane className="right-pane" />}
     </div>
   );
 }

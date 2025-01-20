@@ -67,7 +67,7 @@ export default function CreateEvent({ onClose }) {
                         placeholder='Insert image link here...'
                         name='img'
                         onChange={handleChange} />
-                    <button className='button'>Create Event</button>
+                    <button className='create-event-button'>Create</button>
                 </form>
             </div>
         </div>

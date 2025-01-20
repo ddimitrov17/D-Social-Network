@@ -84,10 +84,10 @@ export default function LeftPane() {
             </NavLink>
           )}
         </nav>
-
-        {user && <button className="post" onClick={createPostHandler}>Post</button>}
-        {user && <button className="post" onClick={createEventHandler}>Create Event</button>}
-
+        <div className="buttons">
+          {user && <button className="post" onClick={createPostHandler}>Post</button>}
+          {user && <button className="post" onClick={createEventHandler}>Create Event</button>}
+        </div>
         {isModalOpen && <CreatePost onClose={closeModalHandler} />}
         {isModalOpenEvent && <CreateEvent onClose={closeModalEventHandler} />}
         <footer>

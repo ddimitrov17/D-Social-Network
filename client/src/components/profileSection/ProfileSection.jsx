@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import Spinner from '../../loadingSpinner/Spinner';
 import { editSVG } from '../Post/postSVG';
 import EditProfile from '../editProfile/EditProfile';
+import { FaPen } from "react-icons/fa";
 
 export default function ProfileSection() {
     const user = useSelector(state => state.user.currentUser);
@@ -105,29 +106,31 @@ export default function ProfileSection() {
                 <div className='cover-image'>
                     <img src={userData.coverImage} alt="Cover Image" />
                 </div>
-                <div className='profile-picture'>
-                    <img src={userData.profilePicture} alt="Profile Picture" />
-                </div>
-                <div className='user-credentials'>
-                    <div className='user-info'>
-                        <div className='user-fullname'>{userData.fullName}</div>
-                        <div className='user-username'>{userData.username ? `@${userData.username}` : ''}</div>
+                <div className='lower-section'>
+                    <div className='profile-picture-insection'>
+                        <img src={userData.profilePicture} alt="Profile Picture" />
                     </div>
-                    {user._id === userData._id && (
-                        <button className='edit-profile-button' onClick={editProfileHandler}>
-                            {editSVG}
-                        </button>
-                    )}
-                    {user._id !== userData._id && (
-                        <button className='follow-button' onClick={followFunctionality}>
-                            {followedByUser ? 'Unfollow' : 'Follow'}
-                        </button>
-                    )}
+                    <div className='user-credentials'>
+                        <div className='user-info'>
+                            <div className='user-fullname'>{userData.fullName}</div>
+                            <div className='user-username'>{userData.username ? `@${userData.username}` : ''}</div>
+                        </div>
+                        <div className='user-bio'>
+                            <p>{userData.bio}</p>
+                        </div>
+                        {user._id === userData._id && (
+                            <button className='edit-profile-button' onClick={editProfileHandler}>
+                                <FaPen />
+                            </button>
+                        )}
+                        {user._id !== userData._id && (
+                            <button className='follow-button' onClick={followFunctionality}>
+                                {followedByUser ? 'Unfollow' : 'Follow'}
+                            </button>
+                        )}
+                    </div>
                 </div>
-                <div className='user-bio'>
-                    <p>{userData.bio}</p>
-                </div>
-                <div className='buttons'>
+                <div className='prof-buttons'>
                     <button className='posts-button'>Posts</button>
                     <button className='likes-button'>Likes</button>
                 </div>
