@@ -2,6 +2,8 @@
   color: #fff;
   width: 100%;
   border-left: 1px solid #232D3F; 
+  box-sizing: border-box;
+  padding: 1rem;
 }
 
 .suggested { 
@@ -41,4 +43,10 @@
   text-align: center;
   font-weight: bold;
   font-size: large;
+}
+
+@media (max-width: 1200px) {
+  .right-pane {
+    display: none;
+  }
 }

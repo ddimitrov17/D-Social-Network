@@ -34,7 +34,7 @@ export default function MessageSidebar({ onConversationSelect }) {
       <div className="conversation-search-section">
         <form>
           <input className="conversation-input-search" type="text" />
-          <button className="conversation-search-button">Search</button>
+          {/* <button className="conversation-search-button">Search</button> */}
         </form>
       </div>
       <div className="conversations">

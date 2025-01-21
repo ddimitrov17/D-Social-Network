@@ -100,3 +100,63 @@
   color: #8899a6;
   text-align: left;
 }
+
+.post-medium-screen {
+  display: none;
+}
+
+@media (max-width:1000px) {
+  .left-pane {
+    max-width: 15% !important;
+    position: relative !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  span.nav-text {
+    display: none !important;
+  }
+
+  div.name,
+  div.username {
+    display: none !important;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .account {
+    display: none !important;
+  }
+
+  .post {
+    display: none;
+  }
+
+  .post-medium-screen {
+    display: flex;
+    width: 50px !important;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px !important;
+  }
+
+  .icon-post {
+    font-size: 1.5em;
+    font-weight: 900;
+  }
+  span.icon {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  span.icon > svg {
+    margin: 0;
+  }
+}
