@@ -118,3 +118,9 @@ input:-webkit-autofill:focus {
     background-color: #232D3F !important;
     -webkit-text-fill-color: white !important;
 }
+
+@media (max-width:800px) {
+    .login-image {
+        display: none;
+    }
+}

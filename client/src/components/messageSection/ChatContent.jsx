@@ -4,6 +4,7 @@ import './MessageSection.css';
 import { useEffect, useRef, useState } from "react";
 import Spinner from "../../loadingSpinner/Spinner";
 import { useSocketContext } from "../../context/SocketContext";
+import { IoIosMenu } from "react-icons/io";
 
 export default function ChatContent({
     messagesArray,
@@ -11,7 +12,9 @@ export default function ChatContent({
     hideLabel,
     chattingtoUserProfilePicture,
     chattingUserId,
-    onAddMessage
+    onAddMessage,
+    maxSidebar,
+    onSidebarToggle
 }) {
     const user = useSelector(state => state.user.currentUser);
     const [isUserLoaded, setIsUserLoaded] = useState(false);
@@ -91,12 +94,13 @@ export default function ChatContent({
     };
 
     return (
-        <div className='chat-content'>
+        <div className={`chat-content ${maxSidebar ? 'flex0' : ''}`}>
             {hideLabel && <div className="welcome-div">Welcome, {user.fullName}! Select a chat to start messaging.</div>}
             {!hideLabel && (
                 <>
                     <div className="current-chat-label">
                         <p className="user-fullname-label">{chattingToUser}</p>
+                        <IoIosMenu className='message-section-hamburger' onClick={onSidebarToggle}/>
                     </div>
                     <div className="chat-to-overflow">
                         {messagesArray && messagesArray.map((currentMessage, index) => (

@@ -6,6 +6,27 @@ import MessageSidebar from './MessagesSidebar';
 export default function MessageSection() {
     const [selectedConversationOtherParticipantId, setSelectedConversationOtherParticipantId] = useState(null);
     const [messagesInConversation, setMessagesInConversation] = useState([]);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setWindowWidth(window.innerWidth);
+            console.log("Window Width:", window.innerWidth);
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+    const [showSidebar, setShowSidebar] = useState(true);
+    const isUnder800px = windowWidth < 800;
+    let maxSidebar=false;
+    if (isUnder800px && selectedConversationOtherParticipantId==null) {
+        maxSidebar=true;
+    }
+    const isOver800px = windowWidth > 800;                                        
     // useEffect(() => {
     // 	setTimeout(() => {
     // 		lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -25,6 +46,7 @@ export default function MessageSection() {
 
     useEffect(() => {
         if (selectedConversationOtherParticipantId) {
+            setShowSidebar(false);
             const fetchMessagesInConversation = async () => {
                 try {
                     const response = await fetch(`http://localhost:5000/api/messages/get-all/${selectedConversationOtherParticipantId}`, {
@@ -37,7 +59,6 @@ export default function MessageSection() {
                     console.error("Error fetching conversations:", error);
                 }
             };
-
             fetchMessagesInConversation();
         }
     }, [selectedConversationOtherParticipantId]);
@@ -52,8 +73,10 @@ export default function MessageSection() {
                     chattingUserId={selectedConversationOtherParticipantId}
                     chattingtoUserProfilePicture={messagesInConversation.userToChat?.profilePicture}
                     onAddMessage={handleAddMessage}
+                    maxSidebar={maxSidebar}
+                    onSidebarToggle={() => setShowSidebar(!showSidebar)}
                 />
-                <MessageSidebar onConversationSelect={handleConversationSelect} />
+                {(showSidebar || isOver800px) && <MessageSidebar onConversationSelect={handleConversationSelect} maxSidebar={maxSidebar}/>}
             </div>
         </div>
     );

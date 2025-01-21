@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SidebarConversation from "./SidebarConversation";
 import './MessageSection.css';
 
-export default function MessageSidebar({ onConversationSelect }) {
+export default function MessageSidebar({ onConversationSelect, maxSidebar }) {
   const [conversationsData, setConversationsData] = useState([]);
   const [selectedConversationId, setSelectedConversationId] = useState(null);
 
@@ -30,7 +30,7 @@ export default function MessageSidebar({ onConversationSelect }) {
   };
 
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${maxSidebar ? 'flex100' : ''}`}>
       <div className="conversation-search-section">
         <form>
           <input className="conversation-input-search" type="text" />

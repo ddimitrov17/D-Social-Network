@@ -197,6 +197,10 @@
     overflow: auto;
 }
 
+.message-section-hamburger {
+    display: none;
+}
+
 @media (max-width:1400px) {
     .message-section-box {
         width: 100%;
@@ -205,4 +209,32 @@
 }
 
 @media (max-width:800px) {
+    .flex100 {
+        flex: 100% !important;
+        border: none !important;
+    }
+    .flex0 {
+        display: none;
+    }
+    .message-section-box {
+        border: none;
+    }
+    .message-input-field {
+        border-radius: 0px;
+    }
+    .current-chat-label {
+        border-radius: 0px;
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+    .message-section-hamburger {
+        display: block;
+        color: white;
+        font-size: 2em;
+        cursor: pointer;
+    }
+    .conversation-search-section {
+        height: 50px;
+    }
 }
