@@ -26,7 +26,8 @@ export default function MessageSection() {
     if (isUnder800px && selectedConversationOtherParticipantId==null) {
         maxSidebar=true;
     }
-    const isOver800px = windowWidth > 800;                                        
+    const isOver800px = windowWidth > 800;    
+    const isUnder600px = windowWidth < 600;                                    
     // useEffect(() => {
     // 	setTimeout(() => {
     // 		lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -62,6 +63,14 @@ export default function MessageSection() {
             fetchMessagesInConversation();
         }
     }, [selectedConversationOtherParticipantId]);
+    useEffect(() => {
+        const leftPane = document.getElementsByClassName("left-pane")[0];
+        if (isUnder600px && selectedConversationOtherParticipantId!=null && location.pathname==="/messages") {
+            leftPane.style.display = "none"
+        } else {
+            leftPane.style.display = "block";
+        }
+    }, [isUnder600px,selectedConversationOtherParticipantId,location.pathname]);
 
     return (
         <div className="message-section">

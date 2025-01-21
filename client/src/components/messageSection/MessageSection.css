@@ -111,10 +111,11 @@
     font-weight: bold;
     position: relative;
     top: -18.5px;
+    padding: 10px;
 }
 
 .user-fullname-label {
-    padding-left: 20px;
+    /* padding-left: 20px; */
     text-align: left;
     padding-top: 6px;
     font-size: 120%;
@@ -201,6 +202,10 @@
     display: none;
 }
 
+.message-section-back-arrow {
+    display: none;
+}
+
 @media (max-width:1400px) {
     .message-section-box {
         width: 100%;
@@ -236,5 +241,14 @@
     }
     .conversation-search-section {
         height: 50px;
+    }
+    .message-section-back-arrow {
+        display: block;
+        color: white;
+        font-size: 2em;
+        cursor: pointer;
+    }
+    .user-fullname-label {
+        font-size: 0.9em;
     }
 }

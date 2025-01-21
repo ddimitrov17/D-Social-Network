@@ -162,4 +162,7 @@
   .container {
     padding: 0px;
   }
+  div.buttons {
+    align-self: center;
+  }
 }

@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from "react";
 import Spinner from "../../loadingSpinner/Spinner";
 import { useSocketContext } from "../../context/SocketContext";
 import { IoIosMenu } from "react-icons/io";
+import { TbArrowBackUp } from "react-icons/tb";
+import { useNavigate } from 'react-router-dom';
 
 export default function ChatContent({
     messagesArray,
@@ -22,6 +24,8 @@ export default function ChatContent({
     const [loadingMessage, setLoadingMessage] = useState(false);
 
     const { socket } = useSocketContext();
+
+    const navigate=useNavigate();
 
 	useEffect(() => {
 		socket?.on("newMessage", (newMessage) => {
@@ -99,6 +103,10 @@ export default function ChatContent({
             {!hideLabel && (
                 <>
                     <div className="current-chat-label">
+                        <TbArrowBackUp className="message-section-back-arrow" onClick={() => {
+                            navigate('/');
+                            document.getElementsByClassName("left-pane")[0].style.display="block";	
+                            }}/>
                         <p className="user-fullname-label">{chattingToUser}</p>
                         <IoIosMenu className='message-section-hamburger' onClick={onSidebarToggle}/>
                     </div>
