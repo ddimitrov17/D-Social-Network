@@ -47,6 +47,7 @@ export default function MessageSidebar({ onConversationSelect, maxSidebar }) {
               fullName={currentConversation.participants[0].fullName}
               isSelected={participantId === selectedConversationId}
               onClick={() => handleConversationClick(participantId)}
+              maxSidebar={maxSidebar}
             />
           );
         })}

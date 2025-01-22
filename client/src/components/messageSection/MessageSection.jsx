@@ -85,7 +85,7 @@ export default function MessageSection() {
                     maxSidebar={maxSidebar}
                     onSidebarToggle={() => setShowSidebar(!showSidebar)}
                 />
-                {(showSidebar || isOver800px) && <MessageSidebar onConversationSelect={handleConversationSelect} maxSidebar={maxSidebar}/>}
+                {(showSidebar || isOver800px) && <MessageSidebar onConversationSelect={handleConversationSelect} maxSidebar={maxSidebar} />}
             </div>
         </div>
     );

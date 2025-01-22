@@ -133,3 +133,9 @@
     line-height: 1.4;
 }
 
+@media (max-width:600px) {
+    .profile-picture-insection {
+        transform: translate(-30%, -65%);
+    }
+}
+

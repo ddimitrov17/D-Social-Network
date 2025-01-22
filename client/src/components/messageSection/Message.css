@@ -43,3 +43,9 @@
     background-color: #005B41; 
     border-top-right-radius: 0;
 }
+
+@media (max-width:600px) {
+    .chat-bubble {
+        font-size: 0.8em;
+    }
+}
