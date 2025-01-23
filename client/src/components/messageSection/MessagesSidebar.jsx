@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import SidebarConversation from "./SidebarConversation";
 import './MessageSection.css';
 
-export default function MessageSidebar({ onConversationSelect, maxSidebar }) {
+export default function MessageSidebar({ onConversationSelect, maxSidebar, isOver600px }) {
   const [conversationsData, setConversationsData] = useState([]);
   const [selectedConversationId, setSelectedConversationId] = useState(null);
 
@@ -48,6 +48,7 @@ export default function MessageSidebar({ onConversationSelect, maxSidebar }) {
               isSelected={participantId === selectedConversationId}
               onClick={() => handleConversationClick(participantId)}
               maxSidebar={maxSidebar}
+              isOver600px={isOver600px}
             />
           );
         })}

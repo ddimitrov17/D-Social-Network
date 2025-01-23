@@ -126,5 +126,21 @@ input:-webkit-autofill:focus {
 @media (max-width:800px) {
   .signup-image {
       display: none;
+      flex: 0 !important;
+  }
+}
+
+@media (max-width:600px) {
+  .signup-input-container {
+    width: 80% !important;
+  }
+  .signup-form {
+    align-items: center !important;
+  }
+  .signup-input-group {
+    justify-content: center !important;
+  }
+  .signup-container {
+    gap: 0 !important;
   }
 }

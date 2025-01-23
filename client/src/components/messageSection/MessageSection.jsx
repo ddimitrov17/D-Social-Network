@@ -27,7 +27,8 @@ export default function MessageSection() {
         maxSidebar=true;
     }
     const isOver800px = windowWidth > 800;    
-    const isUnder600px = windowWidth < 600;                                    
+    const isUnder600px = windowWidth < 600;     
+    const isOver600px = windowWidth > 600;                               
     // useEffect(() => {
     // 	setTimeout(() => {
     // 		lastMessageRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -35,7 +36,7 @@ export default function MessageSection() {
     // }, [messagesInConversation]);
     const handleConversationSelect = (id) => {
         setSelectedConversationOtherParticipantId(id);
-        console.log("Selected Conversation User ID:", id); //TODO: Remove
+        // console.log("Selected Conversation User ID:", id);
     };
 
     const handleAddMessage = (newMessage) => {
@@ -85,7 +86,7 @@ export default function MessageSection() {
                     maxSidebar={maxSidebar}
                     onSidebarToggle={() => setShowSidebar(!showSidebar)}
                 />
-                {(showSidebar || isOver800px) && <MessageSidebar onConversationSelect={handleConversationSelect} maxSidebar={maxSidebar} />}
+                {(showSidebar || isOver800px) && <MessageSidebar onConversationSelect={handleConversationSelect} maxSidebar={maxSidebar} isOver600px={isOver600px}/>}
             </div>
         </div>
     );

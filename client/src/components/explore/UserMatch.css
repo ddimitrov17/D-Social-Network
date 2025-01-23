@@ -38,3 +38,10 @@
     color: #aaa; 
     text-align: left;
 }
+
+@media (max-height:600px) {
+    .user-match {
+        height: 50px;
+    }
+    
+}

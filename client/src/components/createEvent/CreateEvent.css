@@ -85,3 +85,13 @@
     top: 1rem;
     left: 1rem;
 }
+
+@media (max-height: 600px) {
+    .create-event {
+        width: 300px;
+        height: 100%;
+    }
+    .create-event-button {
+        font-size: 0.6em;
+    }
+}

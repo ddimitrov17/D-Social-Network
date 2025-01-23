@@ -124,3 +124,9 @@ input:-webkit-autofill:focus {
         display: none;
     }
 }
+
+@media (max-width:600px) {
+    .login-container {
+        gap: 0 !important;
+    }
+}

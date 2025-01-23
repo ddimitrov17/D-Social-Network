@@ -1,4 +1,4 @@
-export default function SidebarConversation({ profilePicture, fullName, onClick, isSelected, maxSidebar }) {
+export default function SidebarConversation({ profilePicture, fullName, onClick, isSelected, maxSidebar, isOver600px }) {
   return (
     <button
       className={`user-conversation-button${isSelected ? '-clicked' : ''}`}
@@ -6,7 +6,7 @@ export default function SidebarConversation({ profilePicture, fullName, onClick,
     >
       <div className='user-conversation-credentials'>
         <img src={profilePicture} alt="Profile Picture" />
-        {maxSidebar && (<div className='user-conversation-details'>
+        {(maxSidebar || isOver600px) && (<div className='user-conversation-details'>
           <div className='user-conversation-fullname'>{fullName}</div>
         </div>)}
       </div>

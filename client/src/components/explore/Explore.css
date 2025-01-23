@@ -1,5 +1,5 @@
 .search-panel {
-    height: 10vh;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,4 +31,13 @@
     color: #008170;
     padding-left: 1.2em;
     margin: 10px;
+}
+
+@media (max-height:600px) {
+    .search-panel {
+        height: 80px;
+    }
+    .search-input {
+        height: 50%;
+    }
 }
