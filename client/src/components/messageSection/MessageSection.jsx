@@ -11,7 +11,7 @@ export default function MessageSection() {
     useEffect(() => {
         const handleResize = () => {
             setWindowWidth(window.innerWidth);
-            console.log("Window Width:", window.innerWidth);
+            // console.log("Window Width:", window.innerWidth);
         };
 
         window.addEventListener('resize', handleResize);
@@ -57,6 +57,7 @@ export default function MessageSection() {
                     });
                     const conversationsMessages = await response.json();
                     setMessagesInConversation(conversationsMessages);
+                    // console.log(messagesInConversation)
                 } catch (error) {
                     console.error("Error fetching conversations:", error);
                 }

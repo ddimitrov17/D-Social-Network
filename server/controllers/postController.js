@@ -235,7 +235,7 @@ async function postExplore(req, res) {
             });
 
         const users = await User.find({
-            username: { $regex: query, $options: 'i' }
+            fullName: { $regex: query, $options: 'i' }
         });
         res.json({ posts, users });
     } catch (error) {

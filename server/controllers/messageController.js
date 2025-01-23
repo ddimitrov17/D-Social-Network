@@ -49,13 +49,21 @@ async function getMessages(req, res) {
         const senderId = req.user._id;
 
         const userToChat = await User.findById(otherUserInTheConversationId);
-        const conversation = await Conversation.findOne({
+        let conversation = await Conversation.findOne({
             participants: { $all: [senderId, otherUserInTheConversationId] },
         }).populate("messages");
 
-        if (!conversation) return res.status(200).json([]);
+        if (!conversation) {
+            conversation = new Conversation({
+                participants: [senderId, otherUserInTheConversationId],
+                messages: [],
+            });
 
-        const messages = conversation.messages;
+            await conversation.save();
+            // console.log("New conversation created: ", conversation);
+        }
+
+        let messages = (conversation && conversation.messages) || [];
 
         res.status(200).json({ messages, userToChat });
     } catch (error) {
