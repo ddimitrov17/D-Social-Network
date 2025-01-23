@@ -5,7 +5,6 @@
     border: 1px solid #232D3F;
     border-radius: 20px;
     margin-top: 50px;
-    overflow: hidden;
 }
 
 .event-skeleton:last-child {

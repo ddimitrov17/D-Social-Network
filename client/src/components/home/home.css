@@ -1,6 +1,12 @@
 .home {
   background: transparent;
   color: #ffffff;
+  overflow: auto !important;
+    height: 100vh;
+}
+
+.home::-webkit-scrollbar {
+  display: none; 
 }
 
 .home-main-content {

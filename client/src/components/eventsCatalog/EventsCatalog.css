@@ -1,9 +1,10 @@
 .events-catalog {
     display: flex;
     flex-direction: column;
-    overflow: auto;
     color: #fff;
     align-items: center;
+    overflow: auto !important;
+    height: 100vh !important;
 }
 
 .events-catalog::-webkit-scrollbar {

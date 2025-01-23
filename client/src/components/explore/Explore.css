@@ -1,3 +1,12 @@
+.explore {
+    overflow: auto !important;
+    height: 100vh;
+}
+
+.explore::-webkit-scrollbar {
+    display: none; 
+  }
+
 .search-panel {
     height: 100px;
     display: flex;

@@ -1,5 +1,21 @@
 .catalog {
     display: flex;
     flex-direction: column;
+    overflow: auto !important;
+    height: 100vh;
+}
+
+.catalog::-webkit-scrollbar {
+  display: none; 
+}
+
+.bookmarks-section {
+    display: flex;
+    flex-direction: column;
     overflow: auto;
+    height: 100vh;
+}
+
+.bookmarks-section::-webkit-scrollbar {
+    display: none; 
 }
