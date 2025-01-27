@@ -11,7 +11,7 @@ export default function RightPane() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/user/suggested-users', {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/suggested-users`, {
           method: 'GET',
           credentials: 'include',
           headers: {
@@ -46,7 +46,7 @@ export default function RightPane() {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/api/user/follow/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/follow/${id}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

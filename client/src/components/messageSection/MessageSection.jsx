@@ -51,7 +51,7 @@ export default function MessageSection() {
             setShowSidebar(false);
             const fetchMessagesInConversation = async () => {
                 try {
-                    const response = await fetch(`http://localhost:5000/api/messages/get-all/${selectedConversationOtherParticipantId}`, {
+                    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/messages/get-all/${selectedConversationOtherParticipantId}`, {
                         method: 'GET',
                         credentials: 'include',
                     });

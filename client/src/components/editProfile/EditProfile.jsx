@@ -20,7 +20,7 @@ export default function EditProfile({ onClose, email, username, bio, profilePict
     async function createSubmitHandler(e) {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:5000/api/user/edit-profile`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/edit-profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

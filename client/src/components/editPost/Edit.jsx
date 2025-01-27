@@ -31,7 +31,7 @@ export default function EditPost() {
     async function editSubmitHandler(e) {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:5000/api/posts/edit/${postId}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/edit/${postId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

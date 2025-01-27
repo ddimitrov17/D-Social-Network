@@ -13,7 +13,7 @@ export default function EventsCatalog() {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/events/all-events');
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/events/all-events`);
                 const eventsData = await response.json();
                 setEvents(eventsData);
             } catch (error) {

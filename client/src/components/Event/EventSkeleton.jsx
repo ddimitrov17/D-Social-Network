@@ -22,7 +22,7 @@ export default function EventSkeleton({
     useEffect(() => {
         async function fetchEventStatus() {
             try {
-                const response = await fetch(`http://localhost:5000/api/events/event-status/${eventId}`, {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/events/event-status/${eventId}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -52,7 +52,7 @@ export default function EventSkeleton({
             throw new Error('Event ID is missing.');
         }
         try {
-            const response = await fetch(`http://localhost:5000/api/events/going/${eventId}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/events/going/${eventId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -80,7 +80,7 @@ export default function EventSkeleton({
             throw new Error('Event ID is missing.');
         }
         try {
-            const response = await fetch(`http://localhost:5000/api/events/interested/${eventId}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/events/interested/${eventId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

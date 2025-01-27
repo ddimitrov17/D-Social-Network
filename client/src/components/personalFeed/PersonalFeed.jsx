@@ -10,7 +10,7 @@ export default function PersonalFeed() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/posts/following', {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/following`, {
                     method: 'GET',
                     credentials: 'include', 
                     headers: {

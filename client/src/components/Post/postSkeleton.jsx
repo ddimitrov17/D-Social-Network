@@ -19,7 +19,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   useEffect(() => {
     async function fetchLikeStatus() {
       try {
-        const response = await fetch(`http://localhost:5000/api/user/${postId}/status`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/${postId}/status`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       throw new Error("Post ID is missing.");
     }
     try {
-      const response = await fetch(`http://localhost:5000/api/user/like/${postId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/like/${postId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -72,7 +72,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
   useEffect(() => {
     async function fetchBookmarkStatus() {
       try {
-        const response = await fetch(`http://localhost:5000/api/user/bookmarkstatus/${postId}`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/bookmarkstatus/${postId}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       throw new Error("Post ID is missing.");
     }
     try {
-      const response = await fetch(`http://localhost:5000/api/user/bookmark/${postId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/bookmark/${postId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -126,7 +126,7 @@ export default function PostSkeleton({ text, fullName, username, image, postId, 
       throw new Error("Post ID is missing.");
     }
     try {
-      const response = await fetch(`http://localhost:5000/api/posts/delete/${postId}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/delete/${postId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'

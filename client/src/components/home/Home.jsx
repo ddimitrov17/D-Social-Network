@@ -10,7 +10,7 @@ export default function Home() {
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				const response = await fetch('http://localhost:5000/api/posts/home/top');
+				const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/home/top`);
 				const postsData = await response.json();
 				setPosts(postsData);
 			} catch (error) {

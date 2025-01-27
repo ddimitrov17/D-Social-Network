@@ -20,7 +20,7 @@ export default function CreateEvent({ onClose }) {
     async function createSubmitHandler(e) {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5000/api/events/create-event', {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/events/create-event`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

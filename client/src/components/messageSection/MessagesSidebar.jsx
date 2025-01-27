@@ -11,7 +11,7 @@ export default function MessageSidebar({ onConversationSelect, maxSidebar, isOve
   useEffect(() => {
     const fetchConversations = async () => {
       try {
-        const response = await fetch("http://localhost:5000/api/messages/conversations", {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/messages/conversations`, {
           method: "GET",
           credentials: "include",
         });
@@ -38,7 +38,7 @@ export default function MessageSidebar({ onConversationSelect, maxSidebar, isOve
     }
 
     try {
-        const response = await fetch(`http://localhost:5000/api/posts/explore?query=${newQuery}`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/explore?query=${newQuery}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -23,7 +23,7 @@ export default function PostReply({ postId }) {
             return;
         }
         try {
-            const response = await fetch(`http://localhost:5000/api/posts/comment/${postId}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/comment/${postId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

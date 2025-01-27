@@ -9,7 +9,7 @@ export default function Logout() {
   useEffect(() => {
     async function logout() {
       try {
-        await fetch('http://localhost:5000/api/auth/logout', {
+        await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/auth/logout`, {
           method: 'GET',
           credentials: 'include'
         });

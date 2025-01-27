@@ -27,7 +27,7 @@ export default function ProfileSection() {
     useEffect(() => {
         const fetchUserPosts = async () => {
             try {
-                const response = await fetch(`http://localhost:5000/api/posts/profile/${username}`);
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/profile/${username}`);
                 const postsData = await response.json();
                 setUserPosts(postsData.posts);
                 setUserData(postsData.userData);
@@ -49,7 +49,7 @@ export default function ProfileSection() {
         async function fetchFollowingStatus() {
             try {
                 setLoading(true);
-                const response = await fetch(`http://localhost:5000/api/user/follow-status/${userData._id}`, {
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/follow-status/${userData._id}`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'
@@ -75,7 +75,7 @@ export default function ProfileSection() {
         e.preventDefault();
 
         try {
-            const response = await fetch(`http://localhost:5000/api/user/follow/${userData._id}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/follow/${userData._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

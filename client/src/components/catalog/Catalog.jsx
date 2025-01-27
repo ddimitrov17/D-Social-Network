@@ -10,7 +10,7 @@ export default function Catalog() {
     useEffect(() => {
         const fetchPosts = async () => {
             try {
-                const response = await fetch('http://localhost:5000/api/posts/all');
+                const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/all`);
                 const postsData = await response.json();
                 setPosts(postsData);
             } catch (error) {

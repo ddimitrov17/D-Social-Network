@@ -18,7 +18,7 @@ export default function Explore() {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/api/posts/explore?query=${newQuery}`, {
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/explore?query=${newQuery}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

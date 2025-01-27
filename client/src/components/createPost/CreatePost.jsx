@@ -19,7 +19,7 @@ export default function CreatePost({ onClose }) {
 	async function createSubmitHandler(e) {
 		e.preventDefault();
 		try {
-			const response = await fetch('http://localhost:5000/api/posts/create', {
+			const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/posts/create`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
