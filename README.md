@@ -3,6 +3,8 @@
 A 'social network' application built with React and Node.js(Express). The app allows users to create, like, comment, edit, and delete posts. Users can also view a catalog of all posts and see detailed views of individual posts. Authentication is implemented to ensure secure access to the app's features but that does not stop guest users
 of seeing the catalog without of course having the ability to interact with it in any way.
 
+Deployed App: https://dsocialnetwork.onrender.com
+
 ## Features
 
 - **Message Section & Live Chatting Functionality**: Logged In Users are are able to communicate in real time and to have personal conversations between them
@@ -17,15 +19,3 @@ of seeing the catalog without of course having the ability to interact with it i
 - **Event Creating and Responding**: Users are able to create events and respond to them by 'Going' or 'Interested'
 - **Following/Unfollowing Users & Personal Feed**: Users can follow/unfollow each other and have a personal feed including the posts of the people they follow
 - **Edit Profile functionality**: Users are able to update their profile info including their profile picture and cover images
-
-
-## Screenshots
-
-### Homepage
-![Homepage Screenshot](images/D-Social-Network_home.PNG)
-
-### Chat Section
-![Chat Section Screenshot](images/D-Social-Network_messagesection.PNG)
-
-### Post Creation Modal
-![Profile Page Screenshot](images/D-Social-Network_createpost.PNG)
