@@ -56,7 +56,11 @@ async function login(req,res) {
 
 async function logout(req, res) {
 	try {
-		res.clearCookie('jwt');
+		res.cookie("jwt", token, {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None' 
+        });
 		res.status(202).json({ message: "Logged out successfully" });
 	} catch (error) {
 		console.log("Error in logout controller", error.message);
