@@ -16,7 +16,7 @@ async function signup(req, res) {
         });
 
         if (newUser) {
-            generateTokenAndSetCookie(newUser._id.toString(),username,res);
+            generateTokenAndSetCookie(newUser._id.toString(), username, res);
             await newUser.save();
             res.status(201).json({
                 _id: newUser._id,
@@ -32,15 +32,15 @@ async function signup(req, res) {
     }
 };
 
-async function login(req,res) {
+async function login(req, res) {
     try {
         const { username, password } = req.body;
-		const user = await User.findOne({ username });
-		const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
+        const user = await User.findOne({ username });
+        const isPasswordCorrect = await bcrypt.compare(password, user?.password || "");
         if (!user || !isPasswordCorrect) {
-			return res.status(400).json({ error: "Invalid username or password" });
-		};
-        generateTokenAndSetCookie(user._id.toString(),username,res);
+            return res.status(400).json({ error: "Invalid username or password" });
+        };
+        generateTokenAndSetCookie(user._id.toString(), username, res);
 
         res.status(200).json({
             _id: user._id,
@@ -55,16 +55,19 @@ async function login(req,res) {
 }
 
 async function logout(req, res) {
-	try {
-		res.cookie("jwt", token, {
+    try {
+        res.cookie("jwt", token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'None' 
+            sameSite: 'None',
+            path: '/',
+            domain: '.onrender.com',
+            maxAge: 15 * 24 * 60 * 60 * 1000
         });
-		res.status(202).json({ message: "Logged out successfully" });
-	} catch (error) {
-		console.log("Error in logout controller", error.message);
-	}
+        res.status(202).json({ message: "Logged out successfully" });
+    } catch (error) {
+        console.log("Error in logout controller", error.message);
+    }
 };
 
 async function getCurrentUser(req, res) {
@@ -74,7 +77,7 @@ async function getCurrentUser(req, res) {
             .populate({
                 path: "bookmarks",
                 populate: {
-                    path: "user", 
+                    path: "user",
                     select: "username fullName profilePicture"
                 }
             });

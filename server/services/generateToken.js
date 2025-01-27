@@ -12,7 +12,10 @@ function generateTokenAndSetCookie(userId, username,res) {
     res.cookie("jwt", token, {
         httpOnly: true,
         secure: true,
-        sameSite: 'None' 
+        sameSite: 'None',
+        path: '/',
+        domain: '.onrender.com',
+        maxAge: 15 * 24 * 60 * 60 * 1000
     });
 };
 
