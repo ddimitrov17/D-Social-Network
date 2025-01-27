@@ -21,7 +21,7 @@ v2.config({
 });
 
 // const app = express();
-
+app.enable('trust proxy');
 app.use(cors({
     origin: 'https://dsocialnetwork.onrender.com', 
     credentials: true
