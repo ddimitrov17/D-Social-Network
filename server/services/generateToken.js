@@ -11,7 +11,8 @@ function generateTokenAndSetCookie(userId, username,res) {
 
     res.cookie("jwt", token, {
         httpOnly: true,
-        secure: process.env.NODE_ENV !== "development",
+        secure: true,
+        sameSite: 'None' 
     });
 };
 
