@@ -23,17 +23,20 @@ v2.config({
 // const app = express();
 app.enable('trust proxy');
 app.use(cors({
-    origin: 'https://dsocialnetwork.onrender.com', 
+    origin: 'https://dsocialnetwork.onrender.com',
     credentials: true
-  }));
+}));
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/api/auth', authRoutes);
 app.use("/api/posts", postRoutes);
-app.use("/api/user",userRoutes);
-app.use("/api/events",eventRoutes)
-app.use("/api/messages",messageRoutes)
+app.use("/api/user", userRoutes);
+app.use("/api/events", eventRoutes)
+app.use("/api/messages", messageRoutes);
+app.get("/api/ping", (req, res) => {
+    res.status(200).json({ status: "ok" });
+});
 const PORT = process.env.PORT || 5000;
 
 
