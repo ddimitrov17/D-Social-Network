@@ -24,9 +24,7 @@ v2.config({
 app.enable('trust proxy');
 app.use(cors({
     origin: 'https://dsocialnetwork.onrender.com', 
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    credentials: true
   }));
 app.use(express.json());
 app.use(urlencoded({ extended: true }));
