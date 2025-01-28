@@ -59,10 +59,7 @@ async function logout(req, res) {
         res.cookie("jwt", token, {
             httpOnly: true,
             secure: true,
-            sameSite: 'None',
-            path: '/',
-            domain: '.onrender.com',
-            maxAge: 15 * 24 * 60 * 60 * 1000
+            sameSite: 'None'
         });
         res.status(202).json({ message: "Logged out successfully" });
     } catch (error) {
