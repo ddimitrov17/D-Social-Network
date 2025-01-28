@@ -56,7 +56,7 @@ async function login(req, res) {
 
 async function logout(req, res) {
     try {
-        res.cookie("jwt", token, {
+        res.clearCookie("jwt", token, {
             httpOnly: true,
             secure: true,
             sameSite: 'None'
